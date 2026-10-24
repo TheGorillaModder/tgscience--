@@ -994,7 +994,7 @@
                 customParams = parts[0] ? `?${parts[0]}` : '';
                 customFilePath = parts[1];
             } else {
-                customParams = game.params ? `?${game.params}` : '';
+                customParams = game.params ? game.params : '';
                 const imgName = game.img ? game.img : `${game.id}.jpg`;
                 customFilePath = imgName.replace('.jpg', '');
             }
