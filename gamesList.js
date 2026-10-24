@@ -45,8 +45,8 @@ const gamesList = [
     { id: "tgse26gsd-awee", title: "Arrow Escape", img: "awee.jpg", category: "", tags: ["100% working"], plays: 0 },
     { id: "tgse26gsd-heis", title: "Hextris", img: "heis.jpg", category: "", tags: ["100% working"], plays: 0 },
 
-    { id: "tgse26gsd-gdttaoto", title: "Grand Theft Auto 2", img: "gdttaoto.jpg", category: "", tags: ["100% working"], plays: 0 },
-    { id: "tgse26gsd-gdttaote", title: "Grand Theft Auto 3", img: "gdttaote.jpg", category: "", tags: ["100% working"], plays: 0 },
+    { id: "tgse26gsd-gdttaoto", title: "Grand Theft Auto 2", img: "gdttaoto.jpg", params: "|gdttaoto/index.html", category: "", tags: ["100% working"], plays: 0 },
+    //{ id: "tgse26gsd-gdttaote", title: "Grand Theft Auto 3", img: "gdttaote.jpg", category: "", tags: ["100% working"], plays: 0 },
 
     //Minecraft
     { id: "tgse26gsd-mectpe061aa", title: "Minecraft PE v0.6.1 alpha", img: "mect/mectpe061aa.jpg", category: "", params: "|mect/mectpe061aa/index", tags: [], plays: 0 },
