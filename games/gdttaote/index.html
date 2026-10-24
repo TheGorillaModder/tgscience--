@@ -16,8 +16,6 @@
   }
   canvas.emscripten {
     display: block;
-    width: min(100vw, calc(100vh * 16 / 9));
-    height: min(100vh, calc(100vw * 9 / 16));
     image-rendering: auto;
   }
   #loading {
@@ -27,6 +25,7 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    text-align: center;
   }
 </style>
 </head>
@@ -57,25 +56,54 @@
       }
       return ORIG_FETCH.call(this, url, opts);
     };
+
     async function loadDataParts() {
       var parts = [];
-      for (var i = 0; ; i++) {
+      var totalBytesLoaded = 0;
+      var loadingEl = document.getElementById('loading');
+
+      // 1. First, check how many chunks exist and get their total size
+      var chunkBuffers = [];
+      var i = 0;
+      
+      loadingEl.textContent = "Checking data parts...";
+
+      while (true) {
         var resp = await ORIG_FETCH.call(window, 're3.chunk.' + i);
         if (!resp.ok) break;
-        parts.push(await resp.arrayBuffer());
+        
+        // Optional: If headers provide content-length, we can read chunks smoothly
+        var buf = await resp.arrayBuffer();
+        chunkBuffers.push(buf);
+        totalBytesLoaded += buf.byteLength;
+        
+        // Update screen with current MB loaded
+        var loadedMB = (totalBytesLoaded / (1024 * 1024)).toFixed(1);
+        loadingEl.textContent = `Downloading game assets... (${loadedMB}/732.9 MB loaded)`;
+        
+        i++;
       }
-      var total = parts.reduce(function(s, p) { return s + p.byteLength; }, 0);
+
+      if (chunkBuffers.length === 0) {
+        throw new Error("No data chunks found!");
+      }
+
+      loadingEl.textContent = "Assembling data chunks...";
+
+      var total = chunkBuffers.reduce(function(s, p) { return s + p.byteLength; }, 0);
       var combined = new Uint8Array(total);
       var offset = 0;
-      for (var pi = 0; pi < parts.length; pi++) {
-        combined.set(new Uint8Array(parts[pi]), offset);
-        offset += parts[pi].byteLength;
+      for (var pi = 0; pi < chunkBuffers.length; pi++) {
+        combined.set(new Uint8Array(chunkBuffers[pi]), offset);
+        offset += chunkBuffers[pi].byteLength;
       }
+
       return new Response(combined, {
         status: 200,
         headers: { 'Content-Type': 'application/octet-stream' }
       });
     }
+
     var origGetContext = HTMLCanvasElement.prototype.getContext;
     HTMLCanvasElement.prototype.getContext = function(type, attrs) {
       if (type.indexOf('webgl') === 0 || type.indexOf('experimental-webgl') === 0) {
@@ -144,15 +172,15 @@
     })(),
     setStatus: function(text) {
       var loading = document.getElementById('loading');
-      if (loading) loading.textContent = text;
+      if (loading && text) loading.textContent = text;
     },
     totalDependencies: 0,
     monitorRunDependencies: function(left) {
       this.totalDependencies = Math.max(this.totalDependencies, left);
-      Module.setStatus(left ? 'Preparing... (' + (this.totalDependencies - left) + '/' + this.totalDependencies + ')' : '');
+      Module.setStatus(left ? 'Preparing code... (' + (this.totalDependencies - left) + '/' + this.totalDependencies + ')' : '');
     }
   };
-  Module.setStatus('Loading...');
+  Module.setStatus('Initializing...');
 </script>
 <script src="re3.js"></script>
 </body>
