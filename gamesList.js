@@ -46,6 +46,7 @@ const gamesList = [
     { id: "tgse26gsd-gdttaote", title: "Grand Theft Auto 3", img: "gdttaote.jpg", params: "gdttaote/index", category: "", tags: ["100% working"], plays: 0 },
 
     { id: "tgse26gsd-hfle", title: "Half Life", img: "hfle.jpg", params: "hfle/index", category: "", tags: ["100% working"], plays: 0 },
+    { id: "tgse26gsd-hfleogfe", title: "Half Life: Opposing Force", img: "hfleogfe.jpg", params: "hfleogfe/index", category: "", tags: ["100% working"], plays: 0 },
 
 
 
