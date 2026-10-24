@@ -1,0 +1,1176 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full w-full overflow-hidden select-none">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>TG Science 2026 - Windows 11 OS</title>
+    <link rel="icon" type="image/png" href="favicon.png" id="app-favicon">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        winAccent: 'var(--win-accent, #0078D4)',
+                        winAccentHover: 'var(--win-accent-hover, #106EBE)',
+                        winBgDark: 'rgba(32, 32, 32, 0.75)',
+                        winCardDark: 'rgba(45, 45, 45, 0.65)',
+                        winBorder: 'rgba(255, 255, 255, 0.12)',
+                        winBorderSubtle: 'rgba(255, 255, 255, 0.06)'
+                    },
+                    fontFamily: {
+                        sans: ['Segoe UI Variable Text', 'Segoe UI', 'Aptos', '-apple-system', 'BlinkMacSystemFont', 'sans-serif']
+                    },
+                    boxShadow: {
+                        'win11': '0 16px 40px rgba(0, 0, 0, 0.45)',
+                        'win11-subtle': '0 8px 24px rgba(0, 0, 0, 0.25)',
+                        'win-glow': '0 0 20px var(--win-accent-glow, rgba(0, 120, 212, 0.4))'
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            --win-accent: #0078D4;
+            --win-accent-hover: #106EBE;
+            --win-accent-glow: rgba(0, 120, 212, 0.4);
+            --mica-bg: rgba(32, 32, 32, 0.82);
+            --mica-border: rgba(255, 255, 255, 0.14);
+            --taskbar-bg: rgba(20, 20, 20, 0.85);
+            --win-text: #F3F4F6;
+            --card-bg: rgba(255, 255, 255, 0.05);
+            --card-border: rgba(255, 255, 255, 0.1);
+        }
+        .light-theme {
+            --win-accent: #0067C0;
+            --win-accent-hover: #005A9E;
+            --win-accent-glow: rgba(0, 103, 192, 0.3);
+            --mica-bg: rgba(243, 243, 243, 0.88);
+            --mica-border: rgba(0, 0, 0, 0.12);
+            --taskbar-bg: rgba(240, 240, 240, 0.90);
+            --win-text: #1F2937;
+            --card-bg: rgba(0, 0, 0, 0.04);
+            --card-border: rgba(0, 0, 0, 0.08);
+        }
+        /* Mica & Acrylic Backdrop Blur Effects */
+        .mica-glass {
+            background: var(--mica-bg);
+            backdrop-filter: blur(32px) saturate(200%);
+            -webkit-backdrop-filter: blur(32px) saturate(200%);
+            border: 1px solid var(--mica-border);
+            box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.18), 0 20px 50px rgba(0, 0, 0, 0.5);
+        }
+        .taskbar-glass {
+            background: var(--taskbar-bg);
+            backdrop-filter: blur(35px) saturate(210%);
+            -webkit-backdrop-filter: blur(35px) saturate(210%);
+            border-top: 1px solid var(--mica-border);
+        }
+        /* Custom Fluent Scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.05);
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.22);
+            border-radius: 4px;
+        }
+        .light-theme ::-webkit-scrollbar-thumb {
+            background: rgba(0, 0, 0, 0.25);
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--win-accent);
+        }
+        /* Smooth UI Animations */
+        .win-animate-open {
+            animation: winOpen 0.22s cubic-bezier(0.1, 0.9, 0.2, 1) forwards;
+        }
+        .win-animate-close {
+            animation: winClose 0.18s cubic-bezier(0.7, 0, 0.84, 0) forwards;
+        }
+        @keyframes winOpen {
+            from { opacity: 0; transform: scale(0.96) translateY(14px); }
+            to { opacity: 1; transform: scale(1) translateY(0); }
+        }
+        @keyframes winClose {
+            from { opacity: 1; transform: scale(1) translateY(0); }
+            to { opacity: 0; transform: scale(0.96) translateY(14px); }
+        }
+        .desktop-shortcut-active {
+            background-color: rgba(255, 255, 255, 0.18);
+            border-color: rgba(255, 255, 255, 0.3) !important;
+        }
+        .taskbar-pill {
+            position: absolute;
+            bottom: 2px;
+            left: 50%;
+            transform: translateX(-50%);
+            height: 3px;
+            background-color: var(--win-accent);
+            border-radius: 2px;
+            transition: all 0.25s cubic-bezier(0.1, 0.9, 0.2, 1);
+        }
+        /* Noise Overlay */
+        .bg-noise {
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.03'/%3E%3C/svg%3E");
+        }
+        ::selection {
+            background: var(--win-accent);
+            color: #ffffff;
+        }
+        /* Window Resizer Handles */
+        .resizer {
+            position: absolute;
+            z-index: 10;
+        }
+        .resizer-r { top: 0; right: 0; width: 6px; height: 100%; cursor: e-resize; }
+        .resizer-b { bottom: 0; left: 0; width: 100%; height: 6px; cursor: s-resize; }
+        .resizer-br { bottom: 0; right: 0; width: 14px; height: 14px; cursor: se-resize; }
+    </style>
+    <script src="gamesList.js"></script>
+</head>
+<body class="h-full w-full overflow-hidden bg-slate-950 text-slate-100 font-sans antialiased select-none" oncontextmenu="return showContextMenu(event, 'desktop');">
+    <div id="desktop-wallpaper" class="absolute inset-0 bg-cover bg-center transition-all duration-700 z-0 bg-no-repeat" style="background-image: url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2560&auto=format&fit=crop');">
+        <div class="absolute inset-0 bg-black/20 bg-noise pointer-events-none"></div>
+    </div>
+    <div id="desktop-grid" class="absolute inset-0 p-4 pt-6 grid grid-flow-col grid-rows-6 gap-3 w-max h-[calc(100vh-48px)] z-10 pointer-events-auto">
+        <div onclick="selectShortcut(this)" ondblclick="openApp('games')" class="desktop-shortcut group w-24 h-24 rounded-xl flex flex-col items-center justify-center p-2 hover:bg-white/10 active:bg-white/20 cursor-pointer transition-all border border-transparent hover:border-white/10">
+            <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-blue-500 via-indigo-600 to-purple-600 flex items-center justify-center shadow-lg group-hover:scale-105 transition-transform border border-white/20">
+                <i class="fa-solid fa-gamepad text-2xl text-white"></i>
+            </div>
+            <span class="text-xs text-white drop-shadow-[0_1px_3px_rgba(0,0,0,0.9)] mt-2 font-medium text-center truncate w-full">Games Hub</span>
+        </div>
+        <div onclick="selectShortcut(this)" ondblclick="openApp('request')" class="desktop-shortcut group w-24 h-24 rounded-xl flex flex-col items-center justify-center p-2 hover:bg-white/10 active:bg-white/20 cursor-pointer transition-all border border-transparent hover:border-white/10">
+            <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-amber-500 via-orange-600 to-red-600 flex items-center justify-center shadow-lg group-hover:scale-105 transition-transform border border-white/20">
+                <i class="fa-solid fa-code-pull-request text-2xl text-white"></i>
+            </div>
+            <span class="text-xs text-white drop-shadow-[0_1px_3px_rgba(0,0,0,0.9)] mt-2 font-medium text-center truncate w-full">Requests</span>
+        </div>
+        <div onclick="selectShortcut(this)" ondblclick="openApp('report')" class="desktop-shortcut group w-24 h-24 rounded-xl flex flex-col items-center justify-center p-2 hover:bg-white/10 active:bg-white/20 cursor-pointer transition-all border border-transparent hover:border-white/10">
+            <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-amber-500 via-orange-600 to-red-600 flex items-center justify-center shadow-lg group-hover:scale-105 transition-transform border border-white/20">
+                <i class="fa-solid fa-code-pull-report text-2xl text-white"></i>
+            </div>
+            <span class="text-xs text-white drop-shadow-[0_1px_3px_rgba(0,0,0,0.9)] mt-2 font-medium text-center truncate w-full">Reports</span>
+        </div>
+        <div onclick="selectShortcut(this)" ondblclick="openApp('xandy')" class="desktop-shortcut group w-24 h-24 rounded-xl flex flex-col items-center justify-center p-2 hover:bg-white/10 active:bg-white/20 cursor-pointer transition-all border border-transparent hover:border-white/10">
+            <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-purple-500 via-pink-600 to-rose-600 flex items-center justify-center shadow-lg group-hover:scale-105 transition-transform border border-white/20">
+                <i class="fa-solid fa-circle-nodes text-2xl text-white"></i>
+            </div>
+            <span class="text-xs text-white drop-shadow-[0_1px_3px_rgba(0,0,0,0.9)] mt-2 font-medium text-center truncate w-full">Xandy</span>
+        </div>
+        <div onclick="selectShortcut(this)" ondblclick="openApp('settings')" class="desktop-shortcut group w-24 h-24 rounded-xl flex flex-col items-center justify-center p-2 hover:bg-white/10 active:bg-white/20 cursor-pointer transition-all border border-transparent hover:border-white/10">
+            <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-slate-600 via-slate-700 to-slate-900 flex items-center justify-center shadow-lg group-hover:scale-105 transition-transform border border-white/20">
+                <i class="fa-solid fa-gear text-2xl text-white"></i>
+            </div>
+            <span class="text-xs text-white drop-shadow-[0_1px_3px_rgba(0,0,0,0.9)] mt-2 font-medium text-center truncate w-full">Settings</span>
+        </div>
+    </div>
+    <div id="window-container" class="absolute inset-0 bottom-12 pointer-events-none z-20 overflow-hidden">
+        <div id="win-games" class="app-window absolute hidden pointer-events-auto mica-glass rounded-2xl overflow-hidden flex flex-col w-[92%] md:w-[85%] lg:w-[1120px] h-[82%] top-[5%] left-[4%] md:left-[8%] transition-shadow duration-200">
+            <div class="resizer resizer-r"></div><div class="resizer resizer-b"></div><div class="resizer resizer-br"></div>
+            <div class="window-header h-10 bg-white/5 border-b border-white/10 flex items-center justify-between px-3 cursor-move select-none">
+                <div class="flex items-center gap-2.5 text-xs font-semibold text-slate-200">
+                    <i class="fa-solid fa-gamepad text-blue-400 text-sm"></i>
+                    <span>TG Science 2026 - Games Catalog & Hub</span>
+                    <span id="global-play-badge" class="ml-2 text-[10px] bg-blue-500/20 text-blue-300 border border-blue-500/30 px-2 py-0.5 rounded-full font-mono">Global Plays: 0</span>
+                </div>
+                <div class="flex items-center space-x-1">
+                    <button onclick="minimizeApp('games')" class="w-8 h-7 flex items-center justify-center rounded-lg hover:bg-white/10 text-slate-400 hover:text-white transition"><i class="fa-solid fa-minus text-xs"></i></button>
+                    <button onclick="maximizeApp('games')" class="w-8 h-7 flex items-center justify-center rounded-lg hover:bg-white/10 text-slate-400 hover:text-white transition"><i class="fa-regular fa-square text-xs"></i></button>
+                    <button onclick="closeApp('games')" class="w-8 h-7 flex items-center justify-center rounded-lg hover:bg-red-600 text-slate-400 hover:text-white transition"><i class="fa-solid fa-xmark text-sm"></i></button>
+                </div>
+            </div>
+            <div class="p-3 bg-white/5 border-b border-white/5 flex flex-wrap items-center justify-between gap-3">
+                <div class="flex items-center gap-2 flex-1 min-w-[240px]">
+                    <div class="relative w-full">
+                        <i class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
+                        <input id="game-search-input" type="text" oninput="renderGames()" placeholder="Search titles, tags, category..." class="w-full bg-black/40 border border-white/10 rounded-lg pl-9 pr-3 py-1.5 text-xs text-slate-100 placeholder-slate-400 focus:outline-none focus:border-blue-500 transition shadow-inner">
+                    </div>
+                </div>
+                <div class="flex items-center gap-2 flex-wrap">
+                    <select id="game-sort-select" onchange="renderGames()" class="bg-black/40 border border-white/10 rounded-lg px-2.5 py-1.5 text-xs text-slate-200 focus:outline-none focus:border-blue-500">
+                        <option value="alpha-asc">Alphabetical (A-Z)</option>
+                        <option value="alpha-desc">Alphabetical (Z-A)</option>
+                        <option value="plays-desc">Most Played</option>
+                        <option value="plays-asc">Least Played</option>
+                        <option value="category">Category</option>
+                    </select>
+                    <select id="game-category-filter" onchange="renderGames()" class="bg-black/40 border border-white/10 rounded-lg px-2.5 py-1.5 text-xs text-slate-200 focus:outline-none focus:border-blue-500">
+                        <option value="all">All Categories</option>
+                    </select>
+                    <select id="game-tag-filter" onchange="renderGames()" class="bg-black/40 border border-white/10 rounded-lg px-2.5 py-1.5 text-xs text-slate-200 focus:outline-none focus:border-blue-500">
+                        <option value="all">All Tags / Flags</option>
+                    </select>
+                    <div class="flex bg-black/40 p-0.5 border border-white/10 rounded-lg">
+                        <button id="view-grid-btn" onclick="setGameView('grid')" class="px-2.5 py-1 text-xs rounded-md bg-white/20 text-white" title="Grid View"><i class="fa-solid fa-border-all"></i></button>
+                        <button id="view-grouped-btn" onclick="setGameView('grouped')" class="px-2.5 py-1 text-xs rounded-md text-slate-400 hover:text-white" title="Group by Category"><i class="fa-solid fa-layer-group"></i></button>
+                    </div>
+                </div>
+            </div>
+            <div id="games-list-container" class="flex-1 overflow-y-auto p-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            </div>
+        </div>
+        <div id="win-request" class="app-window absolute hidden pointer-events-auto mica-glass rounded-2xl overflow-hidden flex flex-col w-[90%] md:w-[750px] h-[78%] top-[8%] left-[5%] md:left-[18%] transition-shadow duration-200">
+            <div class="resizer resizer-r"></div><div class="resizer resizer-b"></div><div class="resizer resizer-br"></div>
+            <div class="window-header h-10 bg-white/5 border-b border-white/10 flex items-center justify-between px-3 cursor-move select-none">
+                <div class="flex items-center gap-2.5 text-xs font-semibold text-slate-200">
+                    <i class="fa-solid fa-code-pull-request text-amber-400 text-sm"></i>
+                    <span>TG Science Request Hub & Suggestion Center</span>
+                </div>
+                <div class="flex items-center space-x-1">
+                    <button onclick="minimizeApp('request')" class="w-8 h-7 flex items-center justify-center rounded-lg hover:bg-white/10 text-slate-400 hover:text-white"><i class="fa-solid fa-minus text-xs"></i></button>
+                    <button onclick="closeApp('request')" class="w-8 h-7 flex items-center justify-center rounded-lg hover:bg-red-600 text-slate-400 hover:text-white"><i class="fa-solid fa-xmark text-sm"></i></button>
+                </div>
+            </div>
+            <div class="p-4 flex-1 overflow-y-auto space-y-4">
+                <div class="flex justify-between items-center bg-amber-500/10 border border-amber-500/20 rounded-xl p-3.5 text-xs text-amber-200/90">
+                    <div class="flex items-center gap-2.5">
+                        <i class="fa-solid fa-lightbulb text-amber-400 text-base"></i>
+                        <span>Submit requests for new games or proxy unblocks directly to Firestore.</span>
+                    </div>
+                    <button onclick="openSuggestForm()" class="px-3.5 py-1.5 bg-gradient-to-r from-amber-500 to-orange-600 hover:brightness-110 text-white rounded-lg text-xs font-bold shadow transition flex items-center gap-1.5 shrink-0">
+                        <i class="fa-solid fa-plus text-[10px]"></i> Suggest
+                    </button>
+                </div>
+                <div id="request-suggest-cover" class="hidden bg-black/60 border border-amber-500/30 rounded-2xl p-4 space-y-3 win-animate-open shadow-2xl">
+                    <div class="flex justify-between items-center border-b border-white/10 pb-2">
+                        <h4 class="text-xs font-bold text-amber-300 flex items-center gap-2"><i class="fa-solid fa-paper-plane"></i> Submit New Game Request</h4>
+                        <button onclick="closeSuggestForm()" class="text-slate-400 hover:text-white text-xs"><i class="fa-solid fa-xmark"></i></button>
+                    </div>
+                    <div>
+                        <label class="block text-[11px] font-semibold text-slate-300 mb-1">Game Name <span class="text-red-400">*</span></label>
+                        <input id="req-game-name" type="text" placeholder="e.g. Geometry Dash, Retro Bowl 2" class="w-full bg-black/50 border border-white/10 rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-amber-500">
+                    </div>
+                    <div>
+                        <label class="block text-[11px] font-semibold text-slate-300 mb-1">Website URL <span class="text-red-400">*</span></label>
+                        <input id="req-website-url" type="url" placeholder="https://example.com/game" class="w-full bg-black/50 border border-white/10 rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-amber-500 font-mono">
+                    </div>
+                    <div class="flex gap-2 pt-1">
+                        <button onclick="submitSuggestForm()" class="flex-1 py-2 bg-gradient-to-r from-amber-500 to-orange-600 rounded-lg text-xs font-bold text-white hover:brightness-110 transition shadow-md">
+                            Submit Suggestion
+                        </button>
+                        <button onclick="closeSuggestForm()" class="px-4 py-2 bg-white/10 hover:bg-white/15 rounded-lg text-xs font-semibold text-slate-300">
+                            Cancel
+                        </button>
+                    </div>
+                </div>
+                <div class="border-t border-white/10 pt-3">
+                    <h4 class="text-xs font-bold text-slate-300 mb-3 flex items-center justify-between">
+                        <span>Submitted Community Requests (Ordered Descending)</span>
+                        <span id="req-count-badge" class="text-[10px] bg-white/10 px-2 py-0.5 rounded-full text-slate-400 font-mono">0 Items</span>
+                    </h4>
+                    <div id="request-feed" class="space-y-2.5 max-h-80 overflow-y-auto pr-1">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="win-reports" class="app-window absolute hidden pointer-events-auto mica-glass rounded-2xl overflow-hidden flex flex-col w-[90%] md:w-[750px] h-[78%] top-[8%] left-[5%] md:left-[18%] transition-shadow duration-200">
+            <div class="resizer resizer-r"></div><div class="resizer resizer-b"></div><div class="resizer resizer-br"></div>
+            <div class="window-header h-10 bg-white/5 border-b border-white/10 flex items-center justify-between px-3 cursor-move select-none">
+                <div class="flex items-center gap-2.5 text-xs font-semibold text-slate-200">
+                    <i class="fa-solid fa-code-pull-report text-amber-400 text-sm"></i>
+                    <span>TG Science Report Hub & Suggestion Center</span>
+                </div>
+                <div class="flex items-center space-x-1">
+                    <button onclick="minimizeApp('report')" class="w-8 h-7 flex items-center justify-center rounded-lg hover:bg-white/10 text-slate-400 hover:text-white"><i class="fa-solid fa-minus text-xs"></i></button>
+                    <button onclick="closeApp('report')" class="w-8 h-7 flex items-center justify-center rounded-lg hover:bg-red-600 text-slate-400 hover:text-white"><i class="fa-solid fa-xmark text-sm"></i></button>
+                </div>
+            </div>
+            <div class="p-4 flex-1 overflow-y-auto space-y-4">
+                <div class="flex justify-between items-center bg-amber-500/10 border border-amber-500/20 rounded-xl p-3.5 text-xs text-amber-200/90">
+                    <div class="flex items-center gap-2.5">
+                        <i class="fa-solid fa-lightbulb text-amber-400 text-base"></i>
+                        <span>Submit reports for games directly to Firestore.</span>
+                    </div>
+                    <button onclick="openReportForm()" class="px-3.5 py-1.5 bg-gradient-to-r from-amber-500 to-orange-600 hover:brightness-110 text-white rounded-lg text-xs font-bold shadow transition flex items-center gap-1.5 shrink-0">
+                        <i class="fa-solid fa-plus text-[10px]"></i> Report
+                    </button>
+                </div>
+                <div id="report-suggest-cover" class="hidden bg-black/60 border border-amber-500/30 rounded-2xl p-4 space-y-3 win-animate-open shadow-2xl">
+                    <div class="flex justify-between items-center border-b border-white/10 pb-2">
+                        <h4 class="text-xs font-bold text-amber-300 flex items-center gap-2"><i class="fa-solid fa-paper-plane"></i> Submit New Report</h4>
+                        <button onclick="closeReportForm()" class="text-slate-400 hover:text-white text-xs"><i class="fa-solid fa-xmark"></i></button>
+                    </div>
+                    <div>
+                        <label class="block text-[11px] font-semibold text-slate-300 mb-1">Game Name/Main Location <span class="text-red-400">*</span></label>
+                        <input id="rep-game-name" type="text" placeholder="e.g. Geometry Dash, Retro Bowl 2" class="w-full bg-black/50 border border-white/10 rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-amber-500">
+                    </div>
+                    <div>
+                        <label class="block text-[11px] font-semibold text-slate-300 mb-1">Issue <span class="text-red-400">*</span></label>
+                        <input id="rep-issue" type="text" placeholder="Describe the issue you encountered" class="w-full bg-black/50 border border-white/10 rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-amber-500">
+                    </div>
+                    <div class="flex gap-2 pt-1">
+                        <button onclick="submitReportForm()" class="flex-1 py-2 bg-gradient-to-r from-amber-500 to-orange-600 rounded-lg text-xs font-bold text-white hover:brightness-110 transition shadow-md">
+                            Submit Report
+                        </button>
+                        <button onclick="closeReportForm()" class="px-4 py-2 bg-white/10 hover:bg-white/15 rounded-lg text-xs font-semibold text-slate-300">
+                            Cancel
+                        </button>
+                    </div>
+                </div>
+                <div class="border-t border-white/10 pt-3">
+                    <h4 class="text-xs font-bold text-slate-300 mb-3 flex items-center justify-between">
+                        <span>Submitted Community Reports (Ordered Descending)</span>
+                        <span id="rep-count-badge" class="text-[10px] bg-white/10 px-2 py-0.5 rounded-full text-slate-400 font-mono">0 Items</span>
+                    </h4>
+                    <div id="report-feed" class="space-y-2.5 max-h-80 overflow-y-auto pr-1">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="win-xandy" class="app-window absolute hidden pointer-events-auto mica-glass rounded-2xl overflow-hidden flex flex-col w-[90%] md:w-[820px] h-[78%] top-[8%] left-[5%] md:left-[16%] transition-shadow duration-200">
+            <div class="resizer resizer-r"></div><div class="resizer resizer-b"></div><div class="resizer resizer-br"></div>
+            <div class="window-header h-10 bg-white/5 border-b border-white/10 flex items-center justify-between px-3 cursor-move select-none">
+                <div class="flex items-center gap-2.5 text-xs font-semibold text-slate-200">
+                    <i class="fa-solid fa-circle-nodes text-purple-400 text-sm"></i>
+                    <span>Xandy Visual Engine Viewer</span>
+                </div>
+                <div class="flex items-center space-x-1">
+                    <button onclick="minimizeApp('xandy')" class="w-8 h-7 flex items-center justify-center rounded-lg hover:bg-white/10 text-slate-400 hover:text-white"><i class="fa-solid fa-minus text-xs"></i></button>
+                    <button onclick="closeApp('xandy')" class="w-8 h-7 flex items-center justify-center rounded-lg hover:bg-red-600 text-slate-400 hover:text-white"><i class="fa-solid fa-xmark text-sm"></i></button>
+                </div>
+            </div>
+            <div class="flex-1 bg-black flex items-center justify-center p-2 relative overflow-hidden group">
+                <img id="xandy-img" src="images/.1system/xandy.jpg" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1200';" alt="Xandy System Visual" class="w-full h-full object-cover rounded-xl shadow-2xl border border-white/10 transition-transform duration-300 group-hover:scale-[1.01]">
+                <div class="absolute bottom-4 left-4 bg-black/70 backdrop-blur-md px-3.5 py-1.5 rounded-xl border border-white/10 text-xs text-purple-300 flex items-center gap-2">
+                    <i class="fa-solid fa-shield-halved text-purple-400"></i> Xandy Visual Core Active
+                </div>
+            </div>
+        </div>
+        <div id="win-pr0xy" class="app-window absolute hidden pointer-events-auto mica-glass rounded-2xl overflow-hidden flex flex-col w-[92%] md:w-[920px] h-[82%] top-[6%] left-[4%] md:left-[10%] transition-shadow duration-200">
+            <div class="resizer resizer-r"></div><div class="resizer resizer-b"></div><div class="resizer resizer-br"></div>
+            <div class="window-header h-10 bg-white/5 border-b border-white/10 flex items-center justify-between px-3 cursor-move select-none">
+                <div class="flex items-center gap-2.5 text-xs font-semibold text-slate-200">
+                    <i class="fa-solid fa-shield-halved text-emerald-400 text-sm"></i>
+                    <span>Pr0xy Terminal Web Gateway</span>
+                </div>
+                <div class="flex items-center space-x-1">
+                    <button onclick="minimizeApp('pr0xy')" class="w-8 h-7 flex items-center justify-center rounded-lg hover:bg-white/10 text-slate-400 hover:text-white"><i class="fa-solid fa-minus text-xs"></i></button>
+                    <button onclick="closeApp('pr0xy')" class="w-8 h-7 flex items-center justify-center rounded-lg hover:bg-red-600 text-slate-400 hover:text-white"><i class="fa-solid fa-xmark text-sm"></i></button>
+                </div>
+            </div>
+            <div class="p-2 bg-white/5 border-b border-white/10 flex items-center gap-2">
+                <div class="flex items-center gap-1.5 px-2 text-emerald-400 text-xs">
+                    <i class="fa-solid fa-terminal"></i>
+                </div>
+                <input id="proxy-url" type="text" placeholder="https://wikipedia.org" value="https://wikipedia.org" class="flex-1 bg-black/50 border border-white/10 rounded-lg px-3 py-1.5 text-xs text-emerald-400 focus:outline-none focus:border-emerald-500 font-mono">
+                <button onclick="launchProxy()" class="px-4 py-1.5 bg-emerald-600 hover:bg-emerald-500 text-white rounded-lg text-xs font-semibold transition shadow-md">Launch</button>
+            </div>
+            <div class="p-2 bg-emerald-950/50 border-b border-emerald-500/30 px-4 flex justify-between items-center text-xs text-emerald-300 font-medium">
+                <span><i class="fa-solid fa-fire mr-1.5 text-emerald-400"></i> Milestone Celebration: <strong>1000 plays for Pr0xy!</strong></span>
+                <span class="text-emerald-400/80 font-mono text-[11px]">Encrypted Bypass Pipeline</span>
+            </div>
+            <div class="flex-1 bg-slate-900 relative">
+                <iframe id="proxy-frame" src="about:blank" class="w-full h-full border-none"></iframe>
+            </div>
+        </div>
+        <div id="win-settings" class="app-window absolute hidden pointer-events-auto mica-glass rounded-2xl overflow-hidden flex flex-col w-[90%] md:w-[680px] h-[75%] top-[10%] left-[5%] md:left-[20%] transition-shadow duration-200">
+            <div class="resizer resizer-r"></div><div class="resizer resizer-b"></div><div class="resizer resizer-br"></div>
+            <div class="window-header h-10 bg-white/5 border-b border-white/10 flex items-center justify-between px-3 cursor-move select-none">
+                <div class="flex items-center gap-2.5 text-xs font-semibold text-slate-200">
+                    <i class="fa-solid fa-gear text-slate-300 text-sm"></i>
+                    <span>System Settings & Personalization</span>
+                </div>
+                <div class="flex items-center space-x-1">
+                    <button onclick="minimizeApp('settings')" class="w-8 h-7 flex items-center justify-center rounded-lg hover:bg-white/10 text-slate-400 hover:text-white"><i class="fa-solid fa-minus text-xs"></i></button>
+                    <button onclick="closeApp('settings')" class="w-8 h-7 flex items-center justify-center rounded-lg hover:bg-red-600 text-slate-400 hover:text-white"><i class="fa-solid fa-xmark text-sm"></i></button>
+                </div>
+            </div>
+            <div class="p-5 flex-1 overflow-y-auto space-y-6">
+                <div>
+                    <h3 class="text-xs font-bold text-white mb-3 uppercase tracking-wider text-slate-400">Desktop Background Wallpaper</h3>
+                    <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                        <button onclick="changeWallpaper('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2560')" class="h-20 rounded-xl border-2 border-blue-500 bg-cover bg-center hover:opacity-90 transition shadow-md" style="background-image: url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=300');"></button>
+                        <button onclick="changeWallpaper('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=2560')" class="h-20 rounded-xl border border-white/10 bg-cover bg-center hover:opacity-90 transition shadow-md" style="background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=300');"></button>
+                        <button onclick="changeWallpaper('https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=2560')" class="h-20 rounded-xl border border-white/10 bg-cover bg-center hover:opacity-90 transition shadow-md" style="background-image: url('https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=300');"></button>
+                        <button onclick="changeWallpaper('https://images.unsplash.com/photo-1534447677768-be436bb09401?q=80&w=2560')" class="h-20 rounded-xl border border-white/10 bg-cover bg-center hover:opacity-90 transition shadow-md" style="background-image: url('https://images.unsplash.com/photo-1534447677768-be436bb09401?q=80&w=300');"></button>
+                    </div>
+                </div>
+                <div class="border-t border-white/10 pt-4">
+                    <h3 class="text-xs font-bold text-white mb-3 uppercase tracking-wider text-slate-400">Windows Accent Color</h3>
+                    <div class="flex items-center gap-3">
+                        <button onclick="setAccentColor('#0078D4', '#106EBE', 'rgba(0,120,212,0.4)')" class="w-8 h-8 rounded-full bg-[#0078D4] border-2 border-white/40 hover:scale-110 transition"></button>
+                        <button onclick="setAccentColor('#107C41', '#0B5A2F', 'rgba(16,124,65,0.4)')" class="w-8 h-8 rounded-full bg-[#107C41] border-2 border-white/40 hover:scale-110 transition"></button>
+                        <button onclick="setAccentColor('#881798', '#6E127A', 'rgba(136,23,152,0.4)')" class="w-8 h-8 rounded-full bg-[#881798] border-2 border-white/40 hover:scale-110 transition"></button>
+                        <button onclick="setAccentColor('#C33900', '#A02E00', 'rgba(195,57,0,0.4)')" class="w-8 h-8 rounded-full bg-[#C33900] border-2 border-white/40 hover:scale-110 transition"></button>
+                    </div>
+                </div>
+                <div class="border-t border-white/10 pt-4">
+                    <h3 class="text-xs font-bold text-white mb-2 uppercase tracking-wider text-slate-400">System Information & Firebase Status</h3>
+                    <div class="bg-black/40 p-3.5 rounded-xl border border-white/10 space-y-2 text-xs text-slate-300 font-mono">
+                        <div class="flex justify-between"><span>OS Build:</span><span class="text-blue-400">TG Science 2026 Enterprise</span></div>
+                        <div class="flex justify-between"><span>Firebase App ID:</span><span class="text-amber-400">tgscience26</span></div>
+                        <div class="flex justify-between"><span>Firebase SDK:</span><span id="sys-firebase-status" class="text-emerald-400 font-semibold">Initializing v10.4.0...</span></div>
+                        <div class="flex justify-between"><span>Global Plays Tracked:</span><span id="sys-global-plays" class="text-blue-300 font-bold">0</span></div>
+                        <div class="flex justify-between"><span>Total Catalog Games:</span><span id="sys-game-count">0</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="win-runner" class="app-window absolute hidden pointer-events-auto mica-glass rounded-2xl overflow-hidden flex flex-col w-[95%] md:w-[1000px] h-[88%] top-[2%] left-[2.5%] md:left-[8%] transition-shadow duration-200 z-30">
+            <div class="resizer resizer-r"></div><div class="resizer resizer-b"></div><div class="resizer resizer-br"></div>
+            <div class="window-header h-10 bg-black/80 border-b border-white/10 flex items-center justify-between px-3 cursor-move select-none">
+                <div class="flex items-center gap-2.5 text-xs font-semibold text-slate-200">
+                    <i class="fa-solid fa-gamepad text-emerald-400"></i>
+                    <span id="runner-title">Game Title</span>
+                    <span id="runner-play-counter" class="ml-2 text-[10px] bg-blue-500/20 border border-blue-500/30 text-blue-300 px-2 py-0.5 rounded-full font-mono">Plays: 0</span>
+                    <span id="runner-timer" class="ml-2 text-[10px] bg-emerald-500/20 border border-emerald-500/30 text-emerald-300 px-2 py-0.5 rounded-full font-mono">Session: 00:00</span>
+                </div>
+                <div class="flex items-center space-x-1">
+                    <button onclick="toggleRunnerFullscreen()" class="w-8 h-7 flex items-center justify-center rounded-lg hover:bg-white/10 text-slate-400 hover:text-white" title="Maximize Screen"><i class="fa-solid fa-expand text-xs"></i></button>
+                    <button onclick="closeGameRunner()" class="w-8 h-7 flex items-center justify-center rounded-lg hover:bg-red-600 text-slate-400 hover:text-white" title="Close Game"><i class="fa-solid fa-xmark text-sm"></i></button>
+                </div>
+            </div>
+            <div id="runner-body" class="flex-1 bg-black relative">
+                <iframe id="game-iframe" src="games/.1system/gnf404.html" class="w-full h-full border-none" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+    <div id="start-menu" class="fixed bottom-14 left-1/2 -translate-x-1/2 w-[95%] max-w-[560px] h-[590px] mica-glass rounded-3xl p-5 flex flex-col justify-between z-40 hidden win-animate-open shadow-2xl border border-white/15">
+        <div class="relative">
+            <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
+            <input id="start-search" type="text" oninput="filterStartMenu(this.value)" placeholder="Type here to search apps, games, settings..." class="w-full bg-black/50 border border-white/10 rounded-full pl-10 pr-4 py-2.5 text-xs text-white placeholder-slate-400 focus:outline-none focus:border-blue-500 shadow-inner">
+        </div>
+        <div class="my-3 flex-1 overflow-y-auto pr-1">
+            <div class="flex justify-between items-center mb-3">
+                <span class="text-xs font-bold text-slate-200 uppercase tracking-wider">Pinned Applications</span>
+                <span class="text-[11px] text-blue-400 hover:underline cursor-pointer font-medium" onclick="openApp('games'); toggleStartMenu();">All Games &gt;</span>
+            </div>
+            <div id="start-pinned-grid" class="grid grid-cols-4 gap-3">
+                <div onclick="openApp('games'); toggleStartMenu();" class="flex flex-col items-center p-3 rounded-2xl hover:bg-white/10 cursor-pointer transition">
+                    <div class="w-11 h-11 rounded-2xl bg-blue-600 flex items-center justify-center text-white text-lg shadow-md"><i class="fa-solid fa-gamepad"></i></div>
+                    <span class="text-[11px] text-slate-200 mt-2 text-center truncate w-full font-medium">Games Catalog</span>
+                </div>
+                <div onclick="openApp('request'); toggleStartMenu();" class="flex flex-col items-center p-3 rounded-2xl hover:bg-white/10 cursor-pointer transition">
+                    <div class="w-11 h-11 rounded-2xl bg-amber-600 flex items-center justify-center text-white text-lg shadow-md"><i class="fa-solid fa-code-pull-request"></i></div>
+                    <span class="text-[11px] text-slate-200 mt-2 text-center truncate w-full font-medium">Requests</span>
+                </div>
+                <div onclick="openApp('report'); toggleStartMenu();" class="flex flex-col items-center p-3 rounded-2xl hover:bg-white/10 cursor-pointer transition">
+                    <div class="w-11 h-11 rounded-2xl bg-amber-600 flex items-center justify-center text-white text-lg shadow-md"><i class="fa-solid fa-code-pull-report"></i></div>
+                    <span class="text-[11px] text-slate-200 mt-2 text-center truncate w-full font-medium">Reports</span>
+                </div>
+                <div onclick="openApp('xandy'); toggleStartMenu();" class="flex flex-col items-center p-3 rounded-2xl hover:bg-white/10 cursor-pointer transition">
+                    <div class="w-11 h-11 rounded-2xl bg-purple-600 flex items-center justify-center text-white text-lg shadow-md"><i class="fa-solid fa-circle-nodes"></i></div>
+                    <span class="text-[11px] text-slate-200 mt-2 text-center truncate w-full font-medium">Xandy AI</span>
+                </div>
+            </div>
+            <div class="mt-4 border-t border-white/10 pt-3">
+                <span class="text-xs font-bold text-slate-200 uppercase tracking-wider block mb-2.5">Recently Played Games</span>
+                <div id="start-recommended-list" class="space-y-1.5 max-h-48 overflow-y-auto pr-1">
+                </div>
+            </div>
+        </div>
+        <div class="pt-3 border-t border-white/10 flex justify-between items-center px-2">
+            <div class="flex items-center gap-3">
+                <div class="w-9 h-9 rounded-full bg-gradient-to-tr from-blue-500 to-indigo-600 flex items-center justify-center font-bold text-xs text-white shadow">
+                    TG
+                </div>
+                <div class="flex flex-col">
+                    <span class="text-xs font-semibold text-white">TG Student User</span>
+                    <span class="text-[10px] text-slate-400">TG Science 2026 Administrator</span>
+                </div>
+            </div>
+            <button onclick="toggleStartMenu()" class="w-9 h-9 rounded-xl hover:bg-white/10 flex items-center justify-center text-slate-300 hover:text-white transition">
+                <i class="fa-solid fa-power-off text-xs"></i>
+            </button>
+        </div>
+    </div>
+    <div id="calendar-flyout" class="fixed bottom-14 right-3 w-80 mica-glass rounded-2xl p-4 hidden z-40 shadow-2xl border border-white/15 win-animate-open">
+        <div class="flex justify-between items-center mb-3">
+            <span id="cal-month-year" class="text-xs font-bold text-slate-200">October 2026</span>
+            <div class="flex gap-2 text-xs text-slate-400">
+                <i class="fa-solid fa-chevron-up p-1 hover:text-white cursor-pointer"></i>
+                <i class="fa-solid fa-chevron-down p-1 hover:text-white cursor-pointer"></i>
+            </div>
+        </div>
+        <div class="grid grid-cols-7 gap-1 text-center text-[10px] font-semibold text-slate-400 mb-2">
+            <span>Su</span><span>Mo</span><span>Tu</span><span>We</span><span>Th</span><span>Fr</span><span>Sa</span>
+        </div>
+        <div id="cal-days-grid" class="grid grid-cols-7 gap-1 text-center text-xs">
+        </div>
+    </div>
+    <div id="desktop-context-menu" class="fixed hidden mica-glass rounded-xl py-1.5 w-48 z-50 text-xs shadow-2xl border border-white/15">
+        <button onclick="openApp('games'); hideContextMenu();" class="w-full text-left px-3 py-1.5 hover:bg-white/10 flex items-center gap-2 text-slate-200"><i class="fa-solid fa-gamepad text-blue-400"></i> Open Games Catalog</button>
+        <button onclick="renderGames(); hideContextMenu();" class="w-full text-left px-3 py-1.5 hover:bg-white/10 flex items-center gap-2 text-slate-200"><i class="fa-solid fa-rotate text-emerald-400"></i> Refresh Catalog</button>
+        <div class="my-1 border-t border-white/10"></div>
+        <button onclick="openApp('settings'); hideContextMenu();" class="w-full text-left px-3 py-1.5 hover:bg-white/10 flex items-center gap-2 text-slate-200"><i class="fa-solid fa-palette text-amber-400"></i> Personalize Desktop</button>
+    </div>
+    <div class="fixed bottom-0 left-0 right-0 h-12 taskbar-glass flex items-center justify-between px-3 z-50">
+        <div class="w-32 hidden sm:block"></div>
+        <div class="flex items-center gap-1.5 mx-auto">
+            <button onclick="toggleStartMenu()" class="relative w-10 h-10 rounded-xl hover:bg-white/10 active:scale-95 flex items-center justify-center transition group" title="Start Menu">
+                <img id="taskbar-start-icon" src="favicon.png" onerror="this.onerror=null; this.src='https://raw.githubusercontent.com/feathericons/feather/master/icons/grid.svg';" class="w-5 h-5 object-contain group-hover:rotate-6 transition-transform">
+            </button>
+            <button id="tb-games" onclick="toggleApp('games')" class="relative w-10 h-10 rounded-xl hover:bg-white/10 flex items-center justify-center transition group" title="Games Catalog">
+                <i class="fa-solid fa-gamepad text-lg text-blue-400"></i>
+                <div id="pill-games" class="taskbar-pill w-0"></div>
+            </button>
+            <button id="tb-request" onclick="toggleApp('request')" class="relative w-10 h-10 rounded-xl hover:bg-white/10 flex items-center justify-center transition group" title="Requests">
+                <i class="fa-solid fa-code-pull-request text-lg text-amber-400"></i>
+                <div id="pill-request" class="taskbar-pill w-0"></div>
+            </button>
+            <button id="tb-report" onclick="toggleApp('reports')" class="relative w-10 h-10 rounded-xl hover:bg-white/10 flex items-center justify-center transition group" title="Reports">
+                <i class="fa-solid fa-code-pull-report text-lg text-amber-400"></i>
+                <div id="pill-report" class="taskbar-pill w-0"></div>
+            </button>
+            <button id="tb-xandy" onclick="toggleApp('xandy')" class="relative w-10 h-10 rounded-xl hover:bg-white/10 flex items-center justify-center transition group" title="Xandy AI">
+                <i class="fa-solid fa-circle-nodes text-lg text-purple-400"></i>
+                <div id="pill-xandy" class="taskbar-pill w-0"></div>
+            </button>
+            <button id="tb-settings" onclick="toggleApp('settings')" class="relative w-10 h-10 rounded-xl hover:bg-white/10 flex items-center justify-center transition group" title="Settings">
+                <i class="fa-solid fa-gear text-lg text-slate-300"></i>
+                <div id="pill-settings" class="taskbar-pill w-0"></div>
+            </button>
+        </div>
+        <div class="flex items-center gap-2">
+            <button onclick="toggleSystemTheme()" class="w-8 h-8 rounded-lg hover:bg-white/10 flex items-center justify-center text-slate-300 transition" title="Toggle Light/Dark Theme">
+                <i id="theme-icon" class="fa-solid fa-moon text-xs"></i>
+            </button>
+            <div class="flex items-center gap-2.5 px-2.5 py-1 rounded-lg hover:bg-white/10 cursor-pointer text-slate-300 transition">
+                <i class="fa-solid fa-wifi text-xs"></i>
+                <i class="fa-solid fa-volume-high text-xs"></i>
+                <i class="fa-solid fa-battery-three-quarters text-xs"></i>
+            </div>
+            <button onclick="toggleCalendar()" class="flex flex-col items-end px-2 py-0.5 rounded-lg hover:bg-white/10 text-right cursor-pointer transition">
+                <span id="taskbar-time" class="text-[11px] font-bold text-slate-200 leading-tight">12:00 PM</span>
+                <span id="taskbar-date" class="text-[10px] text-slate-400 leading-tight">10/23/2026</span>
+            </button>
+        </div>
+    </div>
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js";
+        import { getFirestore, doc, getDoc, setDoc, updateDoc, increment, collection, onSnapshot, addDoc, query, orderBy } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-firestore.js";
+        const firebaseConfig = {
+            apiKey: "AIzaSyChKLyS1RFT1vix8qMa1iiDJ3QV9o_6X30",
+            authDomain: "tgscience26.firebaseapp.com",
+            projectId: "tgscience26",
+            storageBucket: "tgscience26.firebasestorage.app",
+            messagingSenderId: "622574637052",
+            appId: "1:622574637052:web:15ddb3f85d7d1cf8cf6c79",
+            measurementId: "G-FCM6W830GR"
+        };
+        let app, db;
+        try {
+            app = initializeApp(firebaseConfig);
+            db = getFirestore(app);
+            window.db = db;
+            const statusEl = document.getElementById('sys-firebase-status');
+            if (statusEl) statusEl.innerText = "Connected (v10.4.0)";
+            const globalStatsRef = doc(db, 'stats', 'global');
+            onSnapshot(globalStatsRef, (docSnap) => {
+                if (docSnap.exists()) {
+                    const data = docSnap.data();
+                    if (data.totalPlays !== undefined) {
+                        window.updateGlobalPlayCountDisplay(data.totalPlays);
+                    }
+                }
+            }, (err) => {
+                console.log("Global stats live listener fallback:", err);
+            });
+            const reqRef = collection(db, 'requests');
+            const reqQuery = query(reqRef, orderBy('timestamp', 'desc'));
+            onSnapshot(reqQuery, (snapshot) => {
+                const liveReqs = [];
+                snapshot.forEach(docSnap => {
+                    liveReqs.push({ id: docSnap.id, ...docSnap.data() });
+                });
+                if (liveReqs.length > 0) {
+                    localStorage.setItem('game_requests', JSON.stringify(liveReqs));
+                    if (window.renderRequestFeed) window.renderRequestFeed();
+                }
+            }, (err) => {
+                console.log("Requests live listener fallback:", err);
+            });
+            const repRef = collection(db, 'reports');
+            const repQuery = query(repRef, orderBy('timestamp', 'desc'));
+            onSnapshot(repQuery, (snapshot) => {
+                const liveReps = [];
+                snapshot.forEach(docSnap => {
+                    liveReps.push({ id: docSnap.id, ...docSnap.data() });
+                });
+                if (liveReps.length > 0) {
+                    localStorage.setItem('game_reports', JSON.stringify(liveReps));
+                    if (window.renderReportFeed) window.renderReportFeed();
+                }
+            }, (err) => {
+                console.log("Reports live listener fallback:", err);
+            });
+            const gamesRef = collection(db, 'games');
+            onSnapshot(gamesRef, (snapshot) => {
+                snapshot.forEach(docSnap => {
+                    const data = docSnap.data();
+                    const game = (window.GAMES_DATA || []).find(g => g.id === docSnap.id);
+                    if (game && data.plays !== undefined) {
+                        game.plays = data.plays;
+                    }
+                });
+                if (window.renderGames) window.renderGames();
+            });
+        } catch(e) {
+            console.warn("Firebase Init Fallback Mode:", e);
+            const statusEl = document.getElementById('sys-firebase-status');
+            if (statusEl) {
+                statusEl.innerText = "Offline Cache Active";
+                statusEl.className = "text-amber-400 font-semibold";
+            }
+        }
+        window.recordGamePlay = async function(gameId) {
+            let globalPlays = parseInt(localStorage.getItem('globalPlays') || '0', 10) + 1;
+            localStorage.setItem('globalPlays', globalPlays.toString());
+            window.updateGlobalPlayCountDisplay(globalPlays);
+            let gameKey = `game_${gameId}_plays`;
+            let gamePlays = parseInt(localStorage.getItem(gameKey) || '0', 10) + 1;
+            localStorage.setItem(gameKey, gamePlays.toString());
+            if (window.GAMES_DATA) {
+                const game = window.GAMES_DATA.find(g => g.id === gameId);
+                if (game) {
+                    game.plays = (game.plays || 0) + 1;
+                }
+            }
+            let recent = JSON.parse(localStorage.getItem('tg_recent_games') || '[]');
+            recent = [gameId, ...recent.filter(id => id !== gameId)].slice(0, 8);
+            localStorage.setItem('tg_recent_games', JSON.stringify(recent));
+            if (window.renderStartMenuRecommended) {
+                window.renderStartMenuRecommended();
+            }
+            if (db) {
+                try {
+                    const globalRef = doc(db, 'stats', 'global');
+                    await setDoc(globalRef, { totalPlays: increment(1) }, { merge: true });
+                    const gameRef = doc(db, 'games', gameId);
+                    await setDoc(gameRef, { plays: increment(1) }, { merge: true });
+                } catch(err) {
+                    console.log("Firestore play count sync fallback:", err);
+                }
+            }
+        };
+        window.submitSuggestForm = async function() {
+            const gameName = document.getElementById('req-game-name').value.trim();
+            const websiteUrl = document.getElementById('req-website-url').value.trim();
+            if (!gameName || !websiteUrl) {
+                window.showNotification("Input Error", "Please provide both Game Name and Website URL.");
+                return;
+            }
+            const reqObj = {
+                gameName: gameName,
+                websiteUrl: websiteUrl,
+                timestamp: new Date().toISOString()
+            };
+            let reqs = JSON.parse(localStorage.getItem('game_requests') || '[]');
+            reqs.unshift(reqObj);
+            localStorage.setItem('game_requests', JSON.stringify(reqs));
+            if (db) {
+                try {
+                    await addDoc(collection(db, 'requests'), reqObj);
+                } catch(e) {
+                    console.log("Firestore request submission error:", e);
+                }
+            }
+            document.getElementById('req-game-name').value = '';
+            document.getElementById('req-website-url').value = '';
+            window.closeSuggestForm();
+            window.renderRequestFeed();
+            window.showNotification("Suggestion Submitted", "Your request has been logged successfully.");
+        };
+        window.submitReportForm = async function() {
+            const gameName = document.getElementById('rep-game-name').value.trim();
+            const websiteUrl = document.getElementById('rep-issue').value.trim();
+            if (!gameName || !websiteUrl) {
+                window.showNotification("Input Error", "Please provide both Game Name and Website URL.");
+                return;
+            }
+            const repObj = {
+                gameName: gameName,
+                websiteUrl: websiteUrl,
+                timestamp: new Date().toISOString()
+            };
+            let reps = JSON.parse(localStorage.getItem('game_reports') || '[]');
+            reps.unshift(repObj);
+            localStorage.setItem('game_reports', JSON.stringify(reps));
+            if (db) {
+                try {
+                    await addDoc(collection(db, 'reports'), repObj);
+                } catch(e) {
+                    console.log("Firestore report submission error:", e);
+                }
+            }
+            document.getElementById('rep-game-name').value = '';
+            document.getElementById('rep-issue').value = '';
+            window.closeReportForm();
+            window.renderReportFeed();
+            window.showNotification("Report Submitted", "Your report has been logged successfully.");
+        };
+    </script>
+    <script>
+        let GAMES_DATA = (typeof window.gamesList !== 'undefined' && Array.isArray(window.gamesList) && window.gamesList.length > 0)
+            ? window.gamesList
+            : DEFAULT_FALLBACK_GAMES;
+        let FLAGS_DATA = (typeof window.flags !== 'undefined' && Array.isArray(window.flags) && window.flags.length > 0)
+            ? window.flags
+            : DEFAULT_FALLBACK_FLAGS;
+        GAMES_DATA.forEach(g => {
+            if (!g.title && g.name) g.title = g.name;
+            if (!g.name && g.title) g.name = g.title;
+            if (!g.tags) g.tags = [];
+            let localPlay = localStorage.getItem(`game_${g.id}_plays`);
+            if (localPlay) g.plays = parseInt(localPlay, 10);
+        });
+        window.GAMES_DATA = GAMES_DATA;
+        window.FLAGS_DATA = FLAGS_DATA;
+        let currentGameView = 'grid';
+        let runnerTimerInterval = null;
+        let sessionSeconds = 0;
+        let activeZIndex = 30;
+        window.addEventListener('DOMContentLoaded', () => {
+            updateClock();
+            setInterval(updateClock, 1000);
+            renderCalendarDays();
+            populateTagAndCategoryDropdowns();
+            renderGames();
+            renderRequestFeed();
+            renderReportFeed();
+            window.renderStartMenuRecommended();
+            let globalPlays = localStorage.getItem('globalPlays') || '0';
+            window.updateGlobalPlayCountDisplay(globalPlays);
+            const sysCount = document.getElementById('sys-game-count');
+            if (sysCount) sysCount.innerText = GAMES_DATA.length;
+            setupWindowDraggingAndResizing();
+        });
+        window.updateGlobalPlayCountDisplay = function(count) {
+            const badge = document.getElementById('global-play-badge');
+            const sysBadge = document.getElementById('sys-global-plays');
+            if (badge) badge.innerText = `Global Plays: ${count}`;
+            if (sysBadge) sysBadge.innerText = count.toString();
+        };
+        function updateClock() {
+            const now = new Date();
+            let hours = now.getHours();
+            const minutes = now.getMinutes().toString().padStart(2, '0');
+            const ampm = hours >= 12 ? 'PM' : 'AM';
+            hours = hours % 12 || 12;
+            const timeEl = document.getElementById('taskbar-time');
+            const dateEl = document.getElementById('taskbar-date');
+            if (timeEl) timeEl.innerText = `${hours}:${minutes} ${ampm}`;
+            if (dateEl) dateEl.innerText = now.toLocaleDateString('en-US', { month: '2-digit', day: '2-digit', year: 'numeric' });
+        }
+        function renderCalendarDays() {
+            const grid = document.getElementById('cal-days-grid');
+            if (!grid) return;
+            grid.innerHTML = '';
+            for (let i = 1; i <= 31; i++) {
+                const day = document.createElement('div');
+                day.className = `p-1.5 rounded-lg hover:bg-white/10 cursor-pointer ${i === 23 ? 'bg-blue-600 font-bold text-white shadow' : 'text-slate-300'}`;
+                day.innerText = i;
+                grid.appendChild(day);
+            }
+        }
+        function toggleCalendar() {
+            const cal = document.getElementById('calendar-flyout');
+            cal.classList.toggle('hidden');
+        }
+        function toggleStartMenu() {
+            const sm = document.getElementById('start-menu');
+            sm.classList.toggle('hidden');
+        }
+        function filterStartMenu(query) {
+            query = query.toLowerCase();
+            const pinned = document.getElementById('start-pinned-grid');
+            Array.from(pinned.children).forEach(child => {
+                const name = child.innerText.toLowerCase();
+                child.style.display = name.includes(query) ? 'flex' : 'none';
+            });
+        }
+        window.renderStartMenuRecommended = function() {
+            const container = document.getElementById('start-recommended-list');
+            if (!container) return;
+            const recentIds = JSON.parse(localStorage.getItem('tg_recent_games') || '[]');
+            container.innerHTML = '';
+            if (recentIds.length === 0) {
+                container.innerHTML = '<span class="text-[11px] text-slate-500 italic px-1">No recently played games yet.</span>';
+                return;
+            }
+            recentIds.forEach(id => {
+                const game = GAMES_DATA.find(g => g.id === id);
+                if (game) {
+                    const item = document.createElement('div');
+                    item.className = 'flex items-center justify-between p-2 rounded-xl hover:bg-white/10 cursor-pointer transition group';
+                    item.onclick = () => { launchGame(game.id); toggleStartMenu(); };
+                    item.innerHTML = `
+                        <div class="flex items-center gap-2.5 truncate">
+                            <div class="w-8 h-8 rounded-lg bg-blue-600/30 border border-blue-400/30 flex items-center justify-center text-blue-300 text-xs shadow-inner shrink-0">
+                                <i class="fa-solid fa-gamepad"></i>
+                            </div>
+                            <div class="flex flex-col truncate">
+                                <span class="text-xs text-slate-200 font-bold group-hover:text-blue-400 transition truncate">${game.title || game.name}</span>
+                                <span class="text-[10px] text-slate-400">${game.plays || 0} plays logged</span>
+                            </div>
+                        </div>
+                        <button class="px-2.5 py-1 bg-white/10 hover:bg-blue-600 text-white rounded-lg text-[10px] font-semibold transition shrink-0">
+                            Play
+                        </button>
+                    `;
+                    container.appendChild(item);
+                }
+            });
+        };
+        function openApp(appId) {
+            const win = document.getElementById(`win-${appId}`);
+            if (!win) return;
+            win.classList.remove('hidden');
+            activeZIndex++;
+            win.style.zIndex = activeZIndex;
+            const pill = document.getElementById(`pill-${appId}`);
+            if (pill) pill.style.width = '18px';
+        }
+        function closeApp(appId) {
+            const win = document.getElementById(`win-${appId}`);
+            if (win) win.classList.add('hidden');
+            const pill = document.getElementById(`pill-${appId}`);
+            if (pill) pill.style.width = '0px';
+        }
+        function minimizeApp(appId) {
+            closeApp(appId);
+        }
+        function maximizeApp(appId) {
+            toggleRunnerFullscreen(appId);
+        }
+        function toggleApp(appId) {
+            const win = document.getElementById(`win-${appId}`);
+            if (win.classList.contains('hidden')) {
+                openApp(appId);
+            } else {
+                closeApp(appId);
+            }
+        }
+        function selectShortcut(el) {
+            document.querySelectorAll('.desktop-shortcut').forEach(s => s.classList.remove('desktop-shortcut-active'));
+            el.classList.add('desktop-shortcut-active');
+        }
+        function setupWindowDraggingAndResizing() {
+            const windows = document.querySelectorAll('.app-window');
+            windows.forEach(win => {
+                const header = win.querySelector('.window-header');
+                win.addEventListener('mousedown', () => {
+                    activeZIndex++;
+                    win.style.zIndex = activeZIndex;
+                });
+                if (header) {
+                    header.addEventListener('mousedown', (e) => {
+                        if (win.dataset.maximized === 'true') return;
+                        let startX = e.clientX - win.offsetLeft;
+                        let startY = e.clientY - win.offsetTop;
+                        function onMouseMove(moveEvent) {
+                            win.style.left = `${moveEvent.clientX - startX}px`;
+                            win.style.top = `${moveEvent.clientY - startY}px`;
+                        }
+                        function onMouseUp() {
+                            document.removeEventListener('mousemove', onMouseMove);
+                            document.removeEventListener('mouseup', onMouseUp);
+                        }
+                        document.addEventListener('mousemove', onMouseMove);
+                        document.addEventListener('mouseup', onMouseUp);
+                    });
+                }
+                const resizerBR = win.querySelector('.resizer-br');
+                if (resizerBR) {
+                    resizerBR.addEventListener('mousedown', (e) => {
+                        e.preventDefault();
+                        function onResize(moveEvent) {
+                            win.style.width = `${moveEvent.clientX - win.offsetLeft}px`;
+                            win.style.height = `${moveEvent.clientY - win.offsetTop}px`;
+                        }
+                        function stopResize() {
+                            document.removeEventListener('mousemove', onResize);
+                            document.removeEventListener('mouseup', stopResize);
+                        }
+                        document.addEventListener('mousemove', onResize);
+                        document.addEventListener('mouseup', stopResize);
+                    });
+                }
+            });
+        }
+        function populateTagAndCategoryDropdowns() {
+            const tagSelect = document.getElementById('game-tag-filter');
+            const catSelect = document.getElementById('game-category-filter');
+            if (tagSelect) {
+                tagSelect.innerHTML = '<option value="all">All Tags / Flags</option>';
+                FLAGS_DATA.forEach(flag => {
+                    const opt = document.createElement('option');
+                    opt.value = flag;
+                    opt.innerText = flag.toUpperCase();
+                    tagSelect.appendChild(opt);
+                });
+            }
+            if (catSelect) {
+                catSelect.innerHTML = '<option value="all">All Categories</option>';
+                const categories = [...new Set(GAMES_DATA.map(g => g.category || 'General'))];
+                categories.forEach(c => {
+                    const opt = document.createElement('option');
+                    opt.value = c;
+                    opt.innerText = c;
+                    catSelect.appendChild(opt);
+                });
+            }
+        }
+        function setGameView(mode) {
+            currentGameView = mode;
+            document.getElementById('view-grid-btn').className = mode === 'grid' ? 'px-2.5 py-1 text-xs rounded-md bg-white/20 text-white' : 'px-2.5 py-1 text-xs rounded-md text-slate-400 hover:text-white';
+            document.getElementById('view-grouped-btn').className = mode === 'grouped' ? 'px-2.5 py-1 text-xs rounded-md bg-white/20 text-white' : 'px-2.5 py-1 text-xs rounded-md text-slate-400 hover:text-white';
+            renderGames();
+        }
+        function renderGames() {
+            const search = document.getElementById('game-search-input').value.toLowerCase();
+            const cat = document.getElementById('game-category-filter').value;
+            const tag = document.getElementById('game-tag-filter').value;
+            const sort = document.getElementById('game-sort-select').value;
+            const container = document.getElementById('games-list-container');
+            if (!container) return;
+            container.innerHTML = '';
+            let filtered = GAMES_DATA.filter(g => {
+                const titleStr = (g.title || g.name || '').toLowerCase();
+                const matchSearch = titleStr.includes(search) || (g.tags && g.tags.some(t => t.toLowerCase().includes(search)));
+                const matchCat = cat === 'all' || g.category === cat;
+                const matchTag = tag === 'all' || (g.tags && g.tags.includes(tag));
+                return matchSearch && matchCat && matchTag;
+            });
+            if (sort === 'alpha-asc') filtered.sort((a,b) => (a.title||a.name).localeCompare(b.title||b.name));
+            if (sort === 'alpha-desc') filtered.sort((a,b) => (b.title||b.name).localeCompare(a.title||a.name));
+            if (sort === 'plays-desc') filtered.sort((a,b) => (b.plays || 0) - (a.plays || 0));
+            if (sort === 'plays-asc') filtered.sort((a,b) => (a.plays || 0) - (b.plays || 0));
+            if (sort === 'category') filtered.sort((a,b) => (a.category || '').localeCompare(b.category || ''));
+            if (filtered.length === 0) {
+                container.innerHTML = `
+                    <div class="col-span-full py-16 flex flex-col items-center justify-center text-slate-400">
+                        <i class="fa-solid fa-gamepad text-5xl mb-3 opacity-20"></i>
+                        <p class="text-xs font-semibold">No catalog titles match your filter selection.</p>
+                    </div>
+                `;
+                return;
+            }
+            if (currentGameView === 'grid') {
+                container.className = 'flex-1 overflow-y-auto p-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4';
+                filtered.forEach(game => {
+                    const card = document.createElement('div');
+                    card.className = 'bg-white/5 border border-white/10 hover:border-blue-500/50 rounded-2xl p-3.5 flex flex-col justify-between hover:bg-white/10 transition group cursor-pointer shadow-lg hover:scale-[1.02]';
+                    card.onclick = () => launchGame(game.id);
+                    const thumbImg = game.img ? `images/${game.img}` : 'images/.1system/noImage.jpg';
+                    card.innerHTML = `
+                        <div>
+                            <div class="w-full h-28 rounded-xl bg-slate-900 border border-white/10 overflow-hidden mb-3 group-hover:shadow-win-glow transition relative">
+                                <img src="${thumbImg}" onerror="this.onerror=null; this.src='images/.1system/noImage.jpg';" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                                <span class="absolute top-2 right-2 text-[9px] bg-black/60 backdrop-blur-md px-2 py-0.5 rounded-full text-blue-300 font-mono border border-white/10">${game.category || 'General'}</span>
+                            </div>
+                            <h3 class="text-xs font-bold text-white truncate">${game.title || game.name}</h3>
+                            <div class="flex flex-wrap gap-1 mt-1.5">
+                                ${(game.tags || []).map(t => `<span class="text-[9px] bg-blue-500/10 border border-blue-500/20 text-blue-300 px-1.5 py-0.5 rounded-md font-mono">${t}</span>`).join('')}
+                            </div>
+                        </div>
+                        <div class="mt-3 flex items-center justify-between pt-2 border-t border-white/5 text-[10px] text-slate-400 font-mono">
+                            <span>${game.plays || 0} plays</span>
+                            <span class="text-xs text-blue-400 group-hover:translate-x-1 transition"><i class="fa-solid fa-play"></i></span>
+                        </div>
+                    `;
+                    container.appendChild(card);
+                });
+            } else {
+                container.className = 'flex-1 overflow-y-auto p-4 space-y-6';
+                const categories = [...new Set(filtered.map(g => g.category || 'General'))];
+                categories.forEach(c => {
+                    const groupSec = document.createElement('div');
+                    groupSec.innerHTML = `<h3 class="text-xs font-bold text-slate-300 uppercase tracking-wider mb-3 border-b border-white/10 pb-1">${c}</h3>`;
+                    const groupGrid = document.createElement('div');
+                    groupGrid.className = 'grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3';
+                    filtered.filter(g => (g.category || 'General') === c).forEach(game => {
+                        const card = document.createElement('div');
+                        card.className = 'bg-white/5 border border-white/10 hover:border-blue-500/50 rounded-xl p-2.5 flex items-center gap-3 hover:bg-white/10 transition cursor-pointer';
+                        card.onclick = () => launchGame(game.id);
+                        card.innerHTML = `
+                            <div class="w-10 h-10 rounded-lg bg-blue-600/30 border border-blue-400/30 flex items-center justify-center text-blue-300 text-base shadow shrink-0">
+                                <i class="fa-solid fa-gamepad"></i>
+                            </div>
+                            <div class="flex-1 truncate">
+                                <h4 class="text-xs font-bold text-white truncate">${game.title || game.name}</h4>
+                                <span class="text-[10px] text-slate-400 font-mono">${game.plays || 0} plays</span>
+                            </div>
+                        `;
+                        groupGrid.appendChild(card);
+                    });
+                    groupSec.appendChild(groupGrid);
+                    container.appendChild(groupSec);
+                });
+            }
+        }
+        function launchGame(gameId) {
+            const game = GAMES_DATA.find(g => g.id === gameId);
+            if (!game) return;
+            let customParams = '';
+            let customFilePath = '';
+            if (game.params && game.params.includes('|')) {
+                const parts = game.params.split('|');
+                customParams = parts[0] ? `?${parts[0]}` : '';
+                customFilePath = parts[1];
+            } else {
+                customParams = game.params ? `?${game.params}` : '';
+                const imgName = game.img ? game.img : `${game.id}.jpg`;
+                customFilePath = imgName.replace('.jpg', '');
+            }
+            const constructedUrl = `games/${customFilePath}.html${customParams}`;
+            document.getElementById('runner-title').innerText = game.title || game.name;
+            document.getElementById('runner-play-counter').innerText = `Plays: ${game.plays || 0}`;
+            const iframe = document.getElementById('game-iframe');
+            iframe.src = constructedUrl;
+            const runner = document.getElementById('win-runner');
+            runner.classList.remove('hidden');
+            activeZIndex++;
+            runner.style.zIndex = activeZIndex;
+            sessionSeconds = 0;
+            clearInterval(runnerTimerInterval);
+            runnerTimerInterval = setInterval(() => {
+                sessionSeconds++;
+                const m = Math.floor(sessionSeconds / 60).toString().padStart(2, '0');
+                const s = (sessionSeconds % 60).toString().padStart(2, '0');
+                document.getElementById('runner-timer').innerText = `Session: ${m}:${s}`;
+            }, 1000);
+            if (window.recordGamePlay) {
+                window.recordGamePlay(game.id);
+            }
+        }
+        function closeGameRunner() {
+            document.getElementById('win-runner').classList.add('hidden');
+            document.getElementById('game-iframe').src = 'games/.1system/gnf404.html';
+            clearInterval(runnerTimerInterval);
+        }
+        function toggleRunnerFullscreen() {
+            const container = document.getElementById('game-iframe');
+            if (!document.fullscreenElement) {
+                if (container.requestFullscreen) {
+                    container.requestFullscreen().catch(err => console.error("Fullscreen error:", err));
+                } else if (container.webkitRequestFullscreen) {
+                    container.webkitRequestFullscreen();
+                } else if (container.msRequestFullscreen) {
+                    container.msRequestFullscreen();
+                }
+            } else {
+                if (document.exitFullscreen) {
+                    document.exitFullscreen();
+                } else if (document.webkitExitFullscreen) {
+                    document.webkitExitFullscreen();
+                }
+            }
+        }
+        function openSuggestForm() {
+            document.getElementById('request-suggest-cover').classList.remove('hidden');
+        }
+        function closeSuggestForm() {
+            document.getElementById('request-suggest-cover').classList.add('hidden');
+        }
+        function openReportForm() {
+            document.getElementById('report-suggest-cover').classList.remove('hidden');
+        }
+        function closeReportForm() {
+            document.getElementById('report-suggest-cover').classList.add('hidden');
+        }
+        window.renderRequestFeed = function() {
+            const container = document.getElementById('request-feed');
+            const badge = document.getElementById('req-count-badge');
+            if (!container) return;
+            const reqs = JSON.parse(localStorage.getItem('game_requests') || '[]');
+            if (badge) badge.innerText = `${reqs.length} Items`;
+            if (reqs.length === 0) {
+                container.innerHTML = '<span class="text-[11px] text-slate-500 italic block py-2">No suggestions logged yet.</span>';
+                return;
+            }
+            reqs.sort((a,b) => new Date(b.timestamp || 0) - new Date(a.timestamp || 0));
+            container.innerHTML = reqs.map(r => `
+                <div class="bg-black/40 border border-white/10 rounded-xl p-3 text-xs shadow-inner">
+                    <div class="flex justify-between font-bold text-slate-200 mb-1">
+                        <span>${r.gameName || r.title || 'Untitled'}</span>
+                        <span class="text-[10px] bg-amber-500/20 text-amber-300 px-2 py-0.5 rounded-md font-mono">${r.timestamp ? new Date(r.timestamp).toLocaleDateString() : 'Recent'}</span>
+                    </div>
+                    <p class="text-[11px] text-slate-400 font-mono truncate"><i class="fa-solid fa-link text-[10px] text-amber-400 mr-1"></i> ${r.websiteUrl || r.details || 'N/A'}</p>
+                </div>
+            `).join('');
+        };
+        window.renderReportFeed = function() {
+            const container = document.getElementById('report-feed');
+            const badge = document.getElementById('rep-count-badge');
+            if (!container) return;
+            const reps = JSON.parse(localStorage.getItem('game_reports') || '[]');
+            if (badge) badge.innerText = `${reps.length} Items`;
+            if (reps.length === 0) {
+                container.innerHTML = '<span class="text-[11px] text-slate-500 italic block py-2">No reports logged yet.</span>';
+                return;
+            }
+            reps.sort((a,b) => new Date(b.timestamp || 0) - new Date(a.timestamp || 0));
+            container.innerHTML = reps.map(r => `
+                <div class="bg-black/40 border border-white/10 rounded-xl p-3 text-xs shadow-inner">
+                    <div class="flex justify-between font-bold text-slate-200 mb-1">
+                        <span>${r.gameName || r.title || 'Untitled'}</span>
+                        <span class="text-[10px] bg-amber-500/20 text-amber-300 px-2 py-0.5 rounded-md font-mono">${r.timestamp ? new Date(r.timestamp).toLocaleDateString() : 'Recent'}</span>
+                    </div>
+                    <p class="text-[11px] text-slate-400 font-mono truncate"><i class="fa-solid fa-link text-[10px] text-amber-400 mr-1"></i> ${r.websiteUrl || r.details || 'N/A'}</p>
+                </div>
+            `).join('');
+        };
+        function launchProxy() {
+            const url = document.getElementById('proxy-url').value;
+            if (url) {
+                document.getElementById('proxy-frame').src = url;
+            }
+        }
+        function changeWallpaper(url) {
+            document.getElementById('desktop-wallpaper').style.backgroundImage = `url('${url}')`;
+        }
+        function setAccentColor(accent, hover, glow) {
+            document.documentElement.style.setProperty('--win-accent', accent);
+            document.documentElement.style.setProperty('--win-accent-hover', hover);
+            document.documentElement.style.setProperty('--win-accent-glow', glow);
+        }
+        function toggleSystemTheme() {
+            document.body.classList.toggle('light-theme');
+            const isLight = document.body.classList.contains('light-theme');
+            localStorage.setItem('tg_theme', isLight ? 'light' : 'dark');
+            const icon = document.getElementById('theme-icon');
+            if (icon) {
+                icon.className = isLight ? 'fa-solid fa-sun text-amber-400 text-xs' : 'fa-solid fa-moon text-xs';
+            }
+        }
+        if (localStorage.getItem('tg_theme') === 'light') {
+            document.body.classList.add('light-theme');
+        }
+        function showContextMenu(e, type) {
+            e.preventDefault();
+            const menu = document.getElementById('desktop-context-menu');
+            menu.style.left = `${e.clientX}px`;
+            menu.style.top = `${e.clientY}px`;
+            menu.classList.remove('hidden');
+            return false;
+        }
+        function hideContextMenu() {
+            const menu = document.getElementById('desktop-context-menu');
+            if (menu) menu.classList.add('hidden');
+        }
+        window.addEventListener('click', hideContextMenu);
+        window.showNotification = function(title, msg) {
+            const toast = document.createElement('div');
+            toast.className = 'fixed top-4 right-4 mica-glass rounded-2xl p-3.5 shadow-2xl border border-white/20 z-50 text-xs flex items-center gap-3 win-animate-open max-w-sm';
+            toast.innerHTML = `
+                <div class="w-8 h-8 rounded-xl bg-blue-600 flex items-center justify-center text-white shrink-0"><i class="fa-solid fa-bell"></i></div>
+                <div>
+                    <h4 class="font-bold text-white">${title}</h4>
+                    <p class="text-[11px] text-slate-300 mt-0.5">${msg}</p>
+                </div>
+            `;
+            document.body.appendChild(toast);
+            setTimeout(() => toast.remove(), 4000);
+        };
+    </script>
+</body>
+</html>
