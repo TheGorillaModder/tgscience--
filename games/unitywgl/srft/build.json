@@ -1,0 +1,13 @@
+{
+"TOTAL_MEMORY": 536870912,
+"dataUrl": "build.data",
+"wasmCodeUrl": "build.wasm",
+"wasmFrameworkUrl": "build.framework.js",
+"asmCodeUrl": "build.asm.code",
+"asmMemoryUrl": "build.asm.memory",
+"asmFrameworkUrl": "build.asm.framework.js",
+"graphicsAPI": ["WebGL 2.0", "WebGL 1.0"],
+"webglContextAttributes": {"preserveDrawingBuffer": false},
+"splashScreenStyle": "Light",
+"backgroundColor": "#FFFFFF"
+}

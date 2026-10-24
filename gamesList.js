@@ -39,6 +39,8 @@ const gamesList = [
     { id: "tgse26gsd-gnsn", title: "Gun Spin", img: "unitywgl/gnsn.jpg", params: "?game=unitywgl/gnsn|.1system/unity/indexold", category: "", tags: ["100% working"], plays: 0 },
     { id: "tgse26gsd-swrrted", title: "Snow Rider 3D", img: "unitywgl/swrrted.jpg", params: "?game=unitywgl/swrrted|.1system/unity/indexold", category: "", tags: ["100% working"], plays: 0 },
     { id: "tgse26gsd-stsr", title: "Soviet Sniper", img: "unitywgl/stsr.jpg", params: "?game=unitywgl/stsr|.1system/unity/indexold", category: "", tags: ["100% working"], plays: 0 },
+    { id: "tgse26gsd-agus", title: "Among Us", img: "unitywgl/agus.jpg", params: "?game=unitywgl/agus|.1system/unity/indexold", category: "", tags: ["100% working"], plays: 0 },
+    { id: "tgse26gsd-srft", title: "Superflight", img: "unitywgl/srft.jpg", params: "?game=unitywgl/srft|.1system/unity/indexold", category: "", tags: ["100% working"], plays: 0 },
 
     //Unorganized
     { id: "tgse26gsd-awee", title: "Arrow Escape", img: "awee.jpg", category: "", tags: ["100% working"], plays: 0 },
