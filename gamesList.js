@@ -32,6 +32,7 @@ const gamesList = [
     { id: "tgse26gsd-eecrto", title: "Escape Car 2", img: "unitywgl/eecrto.jpg", params: "?game=unitywgl/eecrto|.1system/unity/index", category: "", tags: ["100% working"], plays: 0 },
     { id: "tgse26gsd-slks", title: "Survival Karts", img: "unitywgl/slks.jpg", params: "?game=unitywgl/slks|.1system/unity/index", category: "", tags: ["100% working"], plays: 0 },
     { id: "tgse26gsd-hyrm", title: "Happy Room", img: "unitywgl/hyrm.jpg", params: "?game=unitywgl/hyrm|.1system/unity/index", category: "", tags: ["100% working"], plays: 0 },
+    { id: "tgse26gsd-hwtofh", title: "How To Fish", img: "unitywgl/hwtofh.jpg", params: "?game=unitywgl/hwtofh|.1system/unity/index", category: "", tags: ["100% working"], plays: 0 },
 
     //Unity Legacy WebGL
     { id: "tgse26gsd-gyto", title: "Granny 2", img: "unitywgl/gyto.jpg", params: "?game=unitywgl/gyto|.1system/unity/indexold", category: "", tags: ["100% working"], plays: 0 },
@@ -46,24 +47,9 @@ const gamesList = [
     { id: "tgse26gsd-awee", title: "Arrow Escape", img: "awee.jpg", category: "", tags: ["100% working"], plays: 0 },
     { id: "tgse26gsd-heis", title: "Hextris", img: "heis.jpg", category: "", tags: ["100% working"], plays: 0 },
     { id: "tgse26gsd-gdttaote", title: "Grand Theft Auto 3", img: "gdttaote.jpg", params: "|gdttaote/index", category: "", tags: ["100% working"], plays: 0 },
-
     { id: "tgse26gsd-hfle", title: "Half Life", img: "hfle.jpg", params: "|hfle/index", category: "", tags: ["100% working"], plays: 0 },
     { id: "tgse26gsd-hfleogfe", title: "Half Life: Opposing Force", img: "hfleogfe.jpg", params: "|hfleogfe/index", category: "", tags: ["100% working"], plays: 0 },
-
-
-
-
-
-
-
-    //{ id: "tgse26gsd-gdttaoto", title: "Grand Theft Auto 2", img: "gdttaoto.jpg", params: "|gdttaoto/index", category: "", tags: ["100% working"], plays: 0 },
-
-
-
-
-
-
-
+    { id: "tgse26gsd-hyge", title: "Horsey Game", img: "hyge.jpg", params: "|hyge/index", category: "", tags: ["100% working"], plays: 0 },
 
     //Minecraft
     { id: "tgse26gsd-mectpe061aa", title: "Minecraft PE v0.6.1 alpha", img: "mect/mectpe061aa.jpg", category: "", params: "|mect/mectpe061aa/index", tags: [], plays: 0 },
@@ -158,6 +144,7 @@ const gamesList = [
     { id: "tgse26gsd-bstrdefe", title: "Bloons Tower Defense 5", img: "bstrde/bstrdefe.jpg", params: "?game=bstrde/bstrdefe|.1system/ruffle", category: "", tags: ["100% working"], plays: 0 },
     { id: "tgse26gsd-dbwstode", title: "Dumb Ways To Die", img: "orfh/dbwstode.jpg", params: "?game=orfh/dbwstode|.1system/ruffle", category: "", tags: ["100% working"], plays: 0 },
 
+    //{ id: "tgse26gsd-gdttaoto", title: "Grand Theft Auto 2", img: "gdttaoto.jpg", params: "|gdttaoto/index", category: "", tags: ["100% working"], plays: 0 },
     //{ id: "tgse26gsd-fysr", title: "Funny Shooter", img: "unitywgl/fysr.jpg", params: "?game=unitywgl/fysr|.1system/unity/index", category: "", tags: ["100% working"], plays: 0 },
     //{ id: "tgse26gsd-rwfs", title: "Rainbow Friends", img: "unitywgl/rwfs.jpg", params: "?game=unitywgl/rwfs|.1system/unity/index", category: "", tags: ["100% working"], plays: 0 },
     //{ id: "tgse26gsd-dydt", title: "Deadly Descent", img: "unitywgl/dydt.jpg", params: "?game=unitywgl/dydt|.1system/unity/index", category: "", tags: ["100% working"], plays: 0 },
