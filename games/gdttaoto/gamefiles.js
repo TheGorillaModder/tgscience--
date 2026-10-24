@@ -143,7 +143,7 @@ async function unpackInstaller(buf, onProgress) {
 // A download that receives nothing for this long is given up, so Play can try again.
 const STALL_MS = 45000;
 
-async function fetchInstaller(onProgress) {
+async function fetchInstallerOld(onProgress) {
   const abort = new AbortController();
   let timer = 0;
   const watch = () => { clearTimeout(timer); timer = setTimeout(() => abort.abort(), STALL_MS); };
@@ -175,6 +175,53 @@ async function fetchInstaller(onProgress) {
   } finally {
     clearTimeout(timer);
   }
+}
+
+async function fetchInstaller(onProgress) {
+    const partFiles = [
+        'GTA2INSTALLER.z01', 'GTA2INSTALLER.z02', 'GTA2INSTALLER.z03',
+        'GTA2INSTALLER.z04', 'GTA2INSTALLER.z05', 'GTA2INSTALLER.z06',
+        'GTA2INSTALLER.z07', 'GTA2INSTALLER.z08', 'GTA2INSTALLER.z09',
+        'GTA2INSTALLER.z10', 'GTA2INSTALLER.z11', 'GTA2INSTALLER.z12',
+        'GTA2INSTALLER.z13', 'GTA2INSTALLER.z14', 'GTA2INSTALLER.z15',
+        'GTA2INSTALLER.z16', 'GTA2INSTALLER.z17', 'GTA2INSTALLER.zip'
+    ];
+
+    try {
+        let totalDownloaded = 0;
+        const buffers = [];
+
+        for (let i = 0; i < partFiles.length; i++) {
+            const url = partFiles[i];
+            const response = await fetch(url);
+            if (!response.ok) throw new Error(`Failed to fetch ${url} (Status: ${response.status})`);
+            
+            const arrayBuf = await response.arrayBuffer();
+            buffers.push(arrayBuf);
+            
+            totalDownloaded += arrayBuf.byteLength;
+            
+            if (typeof onProgress === 'function') {
+                onProgress('download', totalDownloaded, INSTALLER_SIZE);
+            }
+        }
+
+        const masterBlob = new Blob(buffers, { type: 'application/zip' });
+        const masterArrayBuffer = await masterBlob.arrayBuffer();
+        const buf = new Uint8Array(masterArrayBuffer);
+
+        if (buf.length !== INSTALLER_SIZE) {
+            const bytes = (n) => new Intl.NumberFormat(lang()).format(n);
+            throw new Error(t('ui.files.stoppedEarly', { got: bytes(buf.length), total: bytes(INSTALLER_SIZE) }));
+        }
+
+        console.log("Successfully reassembled split archive in browser memory!");
+        return buf;
+
+    } catch (err) {
+        if (err instanceof TypeError) throw new Error(t('ui.files.unreachable', { err: err.message }));
+        throw err;
+    }
 }
 
 export class GameFileCache {
