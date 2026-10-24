@@ -925,6 +925,10 @@
             renderGames();
         }
         function renderGames() {
+            if (!gamesArray || typeof gamesArray.filter !== 'function') {
+                console.warn("Games data not ready yet, skipping render.");
+                return;
+            }
             const search = document.getElementById('game-search-input').value.toLowerCase();
             const cat = document.getElementById('game-category-filter').value;
             const tag = document.getElementById('game-tag-filter').value;
@@ -932,7 +936,7 @@
             const container = document.getElementById('games-list-container');
             if (!container) return;
             container.innerHTML = '';
-            let filtered = GAMES_DATA.filter(g => {
+            var filtered = GAMES_DATA.filter(g => {
                 const titleStr = (g.title || g.name || '').toLowerCase();
                 const matchSearch = titleStr.includes(search) || (g.tags && g.tags.some(t => t.toLowerCase().includes(search)));
                 const matchCat = cat === 'all' || g.category === cat;
@@ -1064,6 +1068,9 @@
                 }
             }
         }
+        window.updateGlobalPlayCountDisplay = window.updateGlobalPlayCountDisplay || function() {
+
+        };
         function openSuggestForm() {
             document.getElementById('request-suggest-cover').classList.remove('hidden');
         }
