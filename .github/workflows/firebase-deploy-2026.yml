@@ -1,4 +1,4 @@
-name: Deploy to Firebase Hosting on merge new
+name: Deploy to Firebase Hosting on merge. tgscience2026
 on:
   push:
     branches:
@@ -10,5 +10,5 @@ jobs:
       - uses: actions/checkout@v4
       - name: Deploy to Firebase
         env:
-          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN_2026 }}
         run: npx firebase-tools deploy --only hosting --project tgscience2026
