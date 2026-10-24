@@ -32,7 +32,7 @@ const gamesList = [
     { id: "tgse26gsd-eecrto", title: "Escape Car 2", img: "unitywgl/eecrto.jpg", params: "?game=unitywgl/eecrto|.1system/unity/index", category: "", tags: ["100% working"], plays: 0 },
     { id: "tgse26gsd-slks", title: "Survival Karts", img: "unitywgl/slks.jpg", params: "?game=unitywgl/slks|.1system/unity/index", category: "", tags: ["100% working"], plays: 0 },
     { id: "tgse26gsd-hyrm", title: "Happy Room", img: "unitywgl/hyrm.jpg", params: "?game=unitywgl/hyrm|.1system/unity/index", category: "", tags: ["100% working"], plays: 0 },
-    { id: "tgse26gsd-", title: "", img: "unitywgl/.jpg", params: "?game=unitywgl/|.1system/unity/index", category: "", tags: ["100% working"], plays: 0 },
+    { id: "tgse26gsd-gatg", title: "Gorilla Tag", img: "unitywgl/gatg.jpg", params: "?game=unitywgl/gatg|.1system/unity/index", category: "", tags: ["100% working"], plays: 0 },
 
     //Unity Legacy WebGL
     { id: "tgse26gsd-gyto", title: "Granny 2", img: "unitywgl/gyto.jpg", params: "?game=unitywgl/gyto|.1system/unity/indexold", category: "", tags: ["100% working"], plays: 0 },
@@ -44,6 +44,9 @@ const gamesList = [
     //Unorganized
     { id: "tgse26gsd-awee", title: "Arrow Escape", img: "awee.jpg", category: "", tags: ["100% working"], plays: 0 },
     { id: "tgse26gsd-heis", title: "Hextris", img: "heis.jpg", category: "", tags: ["100% working"], plays: 0 },
+
+    { id: "tgse26gsd-gdttaoto", title: "Grand Theft Auto 2", img: "gdttaoto.jpg", category: "", tags: ["100% working"], plays: 0 },
+    { id: "tgse26gsd-gdttaote", title: "Grand Theft Auto 3", img: "gdttaote.jpg", category: "", tags: ["100% working"], plays: 0 },
 
     //Minecraft
     { id: "tgse26gsd-mectpe061aa", title: "Minecraft PE v0.6.1 alpha", img: "mect/mectpe061aa.jpg", category: "", params: "|mect/mectpe061aa/index", tags: [], plays: 0 },
