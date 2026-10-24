@@ -31,6 +31,8 @@ const gamesList = [
     { id: "tgse26gsd-mnstcspo", title: "Madalin Stunt Cars Pro", img: "unitywgl/mnstcspo.jpg", params: "?game=unitywgl/mnstcspo|.1system/unity/index", category: "", tags: ["100% working"], plays: 0 },
     { id: "tgse26gsd-eecrto", title: "Escape Car 2", img: "unitywgl/eecrto.jpg", params: "?game=unitywgl/eecrto|.1system/unity/index", category: "", tags: ["100% working"], plays: 0 },
     { id: "tgse26gsd-slks", title: "Survival Karts", img: "unitywgl/slks.jpg", params: "?game=unitywgl/slks|.1system/unity/index", category: "", tags: ["100% working"], plays: 0 },
+    { id: "tgse26gsd-hyrm", title: "Happy Room", img: "unitywgl/hyrm.jpg", params: "?game=unitywgl/hyrm|.1system/unity/index", category: "", tags: ["100% working"], plays: 0 },
+    { id: "tgse26gsd-", title: "", img: "unitywgl/.jpg", params: "?game=unitywgl/|.1system/unity/index", category: "", tags: ["100% working"], plays: 0 },
 
     //Unity Legacy WebGL
     { id: "tgse26gsd-gyto", title: "Granny 2", img: "unitywgl/gyto.jpg", params: "?game=unitywgl/gyto|.1system/unity/indexold", category: "", tags: ["100% working"], plays: 0 },
