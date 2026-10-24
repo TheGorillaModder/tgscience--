@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>TG Science 2026 - Windows 11 OS</title>
     <link rel="icon" type="image/png" href="favicon.png" id="app-favicon">
-    <script src="tailwindcss.js"></script>
+    <script src="https://cdn.tailwindcss.com/3.4.17"></script>
     <script>
         tailwind.config = {
             darkMode: 'class',
@@ -31,7 +31,7 @@
             }
         }
     </script>
-    <link rel="stylesheet" href="fontawesome.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         :root {
             --win-accent: #0078D4;
@@ -991,7 +991,7 @@
             let customFilePath = '';
             if (game.params && game.params.includes('|')) {
                 const parts = game.params.split('|');
-                customParams = parts[0] ? `?${parts[0]}` : '';
+                customParams = parts[0] ? `${parts[0]}` : '';
                 customFilePath = parts[1];
             } else {
                 customParams = game.params ? game.params : '';
