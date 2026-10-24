@@ -555,71 +555,6 @@
             appId: "1:622574637052:web:15ddb3f85d7d1cf8cf6c79",
             measurementId: "G-FCM6W830GR"
         };
-        let app, db;
-        try {
-            app = initializeApp(firebaseConfig);
-            db = getFirestore(app);
-            window.db = db;
-            const statusEl = document.getElementById('sys-firebase-status');
-            if (statusEl) statusEl.innerText = "Connected (v10.4.0)";
-            const globalStatsRef = doc(db, 'stats', 'global');
-            onSnapshot(globalStatsRef, (docSnap) => {
-                if (docSnap.exists()) {
-                    const data = docSnap.data();
-                    if (data.totalPlays !== undefined) {
-                        window.updateGlobalPlayCountDisplay(data.totalPlays);
-                    }
-                }
-            }, (err) => {
-                console.log("Global stats live listener fallback:", err);
-            });
-            const reqRef = collection(db, 'requests');
-            const reqQuery = query(reqRef, orderBy('timestamp', 'desc'));
-            onSnapshot(reqQuery, (snapshot) => {
-                const liveReqs = [];
-                snapshot.forEach(docSnap => {
-                    liveReqs.push({ id: docSnap.id, ...docSnap.data() });
-                });
-                if (liveReqs.length > 0) {
-                    localStorage.setItem('game_requests', JSON.stringify(liveReqs));
-                    if (window.renderRequestFeed) window.renderRequestFeed();
-                }
-            }, (err) => {
-                console.log("Requests live listener fallback:", err);
-            });
-            const repRef = collection(db, 'reports');
-            const repQuery = query(repRef, orderBy('timestamp', 'desc'));
-            onSnapshot(repQuery, (snapshot) => {
-                const liveReps = [];
-                snapshot.forEach(docSnap => {
-                    liveReps.push({ id: docSnap.id, ...docSnap.data() });
-                });
-                if (liveReps.length > 0) {
-                    localStorage.setItem('game_reports', JSON.stringify(liveReps));
-                    if (window.renderReportFeed) window.renderReportFeed();
-                }
-            }, (err) => {
-                console.log("Reports live listener fallback:", err);
-            });
-            const gamesRef = collection(db, 'games');
-            onSnapshot(gamesRef, (snapshot) => {
-                snapshot.forEach(docSnap => {
-                    const data = docSnap.data();
-                    const game = (window.GAMES_DATA || []).find(g => g.id === docSnap.id);
-                    if (game && data.plays !== undefined) {
-                        game.plays = data.plays;
-                    }
-                });
-                if (window.renderGames) window.renderGames();
-            });
-        } catch(e) {
-            console.warn("Firebase Init Fallback Mode:", e);
-            const statusEl = document.getElementById('sys-firebase-status');
-            if (statusEl) {
-                statusEl.innerText = "Offline Cache Active";
-                statusEl.className = "text-amber-400 font-semibold";
-            }
-        }
         window.recordGamePlay = async function(gameId) {
             let globalPlays = parseInt(localStorage.getItem('globalPlays') || '0', 10) + 1;
             localStorage.setItem('globalPlays', globalPlays.toString());
@@ -1170,6 +1105,71 @@
             document.body.appendChild(toast);
             setTimeout(() => toast.remove(), 4000);
         };
+        let app, db;
+        try {
+            app = initializeApp(firebaseConfig);
+            db = getFirestore(app);
+            window.db = db;
+            const statusEl = document.getElementById('sys-firebase-status');
+            if (statusEl) statusEl.innerText = "Connected (v10.4.0)";
+            const globalStatsRef = doc(db, 'stats', 'global');
+            onSnapshot(globalStatsRef, (docSnap) => {
+                if (docSnap.exists()) {
+                    const data = docSnap.data();
+                    if (data.totalPlays !== undefined) {
+                        window.updateGlobalPlayCountDisplay(data.totalPlays);
+                    }
+                }
+            }, (err) => {
+                console.log("Global stats live listener fallback:", err);
+            });
+            const reqRef = collection(db, 'requests');
+            const reqQuery = query(reqRef, orderBy('timestamp', 'desc'));
+            onSnapshot(reqQuery, (snapshot) => {
+                const liveReqs = [];
+                snapshot.forEach(docSnap => {
+                    liveReqs.push({ id: docSnap.id, ...docSnap.data() });
+                });
+                if (liveReqs.length > 0) {
+                    localStorage.setItem('game_requests', JSON.stringify(liveReqs));
+                    if (window.renderRequestFeed) window.renderRequestFeed();
+                }
+            }, (err) => {
+                console.log("Requests live listener fallback:", err);
+            });
+            const repRef = collection(db, 'reports');
+            const repQuery = query(repRef, orderBy('timestamp', 'desc'));
+            onSnapshot(repQuery, (snapshot) => {
+                const liveReps = [];
+                snapshot.forEach(docSnap => {
+                    liveReps.push({ id: docSnap.id, ...docSnap.data() });
+                });
+                if (liveReps.length > 0) {
+                    localStorage.setItem('game_reports', JSON.stringify(liveReps));
+                    if (window.renderReportFeed) window.renderReportFeed();
+                }
+            }, (err) => {
+                console.log("Reports live listener fallback:", err);
+            });
+            const gamesRef = collection(db, 'games');
+            onSnapshot(gamesRef, (snapshot) => {
+                snapshot.forEach(docSnap => {
+                    const data = docSnap.data();
+                    const game = (window.GAMES_DATA || []).find(g => g.id === docSnap.id);
+                    if (game && data.plays !== undefined) {
+                        game.plays = data.plays;
+                    }
+                });
+                if (window.renderGames) window.renderGames();
+            });
+        } catch(e) {
+            console.warn("Firebase Init Fallback Mode:", e);
+            const statusEl = document.getElementById('sys-firebase-status');
+            if (statusEl) {
+                statusEl.innerText = "Offline Cache Active";
+                statusEl.className = "text-amber-400 font-semibold";
+            }
+        }
     </script>
 </body>
 </html>
