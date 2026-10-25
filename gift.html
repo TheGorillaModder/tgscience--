@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>TG Science 2026 - Windows 11 OS</title>
+    <title>TG Science</title>
     <link rel="icon" type="image/png" href="favicon.png" id="app-favicon">
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -136,36 +136,36 @@
     <script src="gamesList.js"></script>
 </head>
 <body class="h-full w-full overflow-hidden bg-slate-950 text-slate-100 font-sans antialiased select-none" oncontextmenu="return showContextMenu(event, 'desktop');">
-    <div id="desktop-wallpaper" class="absolute inset-0 bg-cover bg-center transition-all duration-700 z-0 bg-no-repeat" style="background-image: url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2560&auto=format&fit=crop');">
+    <div id="desktop-wallpaper" class="absolute inset-0 bg-cover bg-center transition-all duration-700 z-0 bg-no-repeat">
         <div class="absolute inset-0 bg-black/20 bg-noise pointer-events-none"></div>
     </div>
     <div id="desktop-grid" class="absolute inset-0 p-4 pt-6 grid grid-flow-col grid-rows-6 gap-3 w-max h-[calc(100vh-48px)] z-10 pointer-events-auto">
-        <div onclick="selectShortcut(this)" ondblclick="openApp('games')" class="desktop-shortcut group w-24 h-24 rounded-xl flex flex-col items-center justify-center p-2 hover:bg-white/10 active:bg-white/20 cursor-pointer transition-all border border-transparent hover:border-white/10">
-            <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-blue-500 via-indigo-600 to-purple-600 flex items-center justify-center shadow-lg group-hover:scale-105 transition-transform border border-white/20">
+        <div onclick="openApp('games')" class="desktop-shortcut group w-24 h-24 rounded-xl flex flex-col items-center justify-center p-2 hover:bg-white/10 active:bg-white/20 cursor-pointer transition-all border border-transparent hover:border-white/10">
+            <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-indigo-300 via-indigo-600 to-indigo-900 flex items-center justify-center shadow-lg group-hover:scale-105 transition-transform border border-white/20">
                 <i class="fa-solid fa-gamepad text-2xl text-white"></i>
             </div>
             <span class="text-xs text-white drop-shadow-[0_1px_3px_rgba(0,0,0,0.9)] mt-2 font-medium text-center truncate w-full">Games Hub</span>
         </div>
-        <div onclick="selectShortcut(this)" ondblclick="openApp('request')" class="desktop-shortcut group w-24 h-24 rounded-xl flex flex-col items-center justify-center p-2 hover:bg-white/10 active:bg-white/20 cursor-pointer transition-all border border-transparent hover:border-white/10">
-            <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-amber-500 via-orange-600 to-red-600 flex items-center justify-center shadow-lg group-hover:scale-105 transition-transform border border-white/20">
+        <div onclick="openApp('request')" class="desktop-shortcut group w-24 h-24 rounded-xl flex flex-col items-center justify-center p-2 hover:bg-white/10 active:bg-white/20 cursor-pointer transition-all border border-transparent hover:border-white/10">
+            <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-orange-300 via-orange-600 to-orange-900 flex items-center justify-center shadow-lg group-hover:scale-105 transition-transform border border-white/20">
                 <i class="fa-solid fa-code-pull-request text-2xl text-white"></i>
             </div>
             <span class="text-xs text-white drop-shadow-[0_1px_3px_rgba(0,0,0,0.9)] mt-2 font-medium text-center truncate w-full">Requests</span>
         </div>
-        <div onclick="selectShortcut(this)" ondblclick="openApp('reports')" class="desktop-shortcut group w-24 h-24 rounded-xl flex flex-col items-center justify-center p-2 hover:bg-white/10 active:bg-white/20 cursor-pointer transition-all border border-transparent hover:border-white/10">
-            <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-red-500 via-orange-600 to-red-600 flex items-center justify-center shadow-lg group-hover:scale-105 transition-transform border border-white/20">
+        <div onclick="openApp('reports')" class="desktop-shortcut group w-24 h-24 rounded-xl flex flex-col items-center justify-center p-2 hover:bg-white/10 active:bg-white/20 cursor-pointer transition-all border border-transparent hover:border-white/10">
+            <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-red-300 via-red-600 to-red-900 flex items-center justify-center shadow-lg group-hover:scale-105 transition-transform border border-white/20">
                 <i class="fa-solid fa-bug text-2xl text-white"></i>
             </div>
             <span class="text-xs text-white drop-shadow-[0_1px_3px_rgba(0,0,0,0.9)] mt-2 font-medium text-center truncate w-full">Reports</span>
         </div>
-        <div onclick="selectShortcut(this)" ondblclick="openApp('xandy')" class="desktop-shortcut group w-24 h-24 rounded-xl flex flex-col items-center justify-center p-2 hover:bg-white/10 active:bg-white/20 cursor-pointer transition-all border border-transparent hover:border-white/10">
-            <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-purple-500 via-pink-600 to-rose-600 flex items-center justify-center shadow-lg group-hover:scale-105 transition-transform border border-white/20">
+        <div onclick="openApp('xandy')" class="desktop-shortcut group w-24 h-24 rounded-xl flex flex-col items-center justify-center p-2 hover:bg-white/10 active:bg-white/20 cursor-pointer transition-all border border-transparent hover:border-white/10">
+            <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-pink-300 via-pink-600 to-pink-900 flex items-center justify-center shadow-lg group-hover:scale-105 transition-transform border border-white/20">
                 <i class="fa-solid fa-circle-nodes text-2xl text-white"></i>
             </div>
             <span class="text-xs text-white drop-shadow-[0_1px_3px_rgba(0,0,0,0.9)] mt-2 font-medium text-center truncate w-full">Xandy</span>
         </div>
-        <div onclick="selectShortcut(this)" ondblclick="openApp('settings')" class="desktop-shortcut group w-24 h-24 rounded-xl flex flex-col items-center justify-center p-2 hover:bg-white/10 active:bg-white/20 cursor-pointer transition-all border border-transparent hover:border-white/10">
-            <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-slate-600 via-slate-700 to-slate-900 flex items-center justify-center shadow-lg group-hover:scale-105 transition-transform border border-white/20">
+        <div onclick="openApp('settings')" class="desktop-shortcut group w-24 h-24 rounded-xl flex flex-col items-center justify-center p-2 hover:bg-white/10 active:bg-white/20 cursor-pointer transition-all border border-transparent hover:border-white/10">
+            <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-slate-300 via-slate-600 to-slate-900 flex items-center justify-center shadow-lg group-hover:scale-105 transition-transform border border-white/20">
                 <i class="fa-solid fa-gear text-2xl text-white"></i>
             </div>
             <span class="text-xs text-white drop-shadow-[0_1px_3px_rgba(0,0,0,0.9)] mt-2 font-medium text-center truncate w-full">Settings</span>
@@ -173,11 +173,11 @@
     </div>
     <div id="window-container" class="absolute inset-0 bottom-12 pointer-events-none z-20 overflow-hidden">
         <div id="win-games" class="app-window absolute hidden pointer-events-auto mica-glass rounded-2xl overflow-hidden flex flex-col w-[92%] md:w-[85%] lg:w-[1120px] h-[82%] top-[5%] left-[4%] md:left-[8%] transition-shadow duration-200">
-            <div class="resizer resizer-r"></div><div class="resizer resizer-b"></div><div class="resizer resizer-br"></div>
+            <!--<div class="resizer resizer-r"></div><div class="resizer resizer-b"></div><div class="resizer resizer-br"></div>-->
             <div class="window-header h-10 bg-white/5 border-b border-white/10 flex items-center justify-between px-3 cursor-move select-none">
                 <div class="flex items-center gap-2.5 text-xs font-semibold text-slate-200">
                     <i class="fa-solid fa-gamepad text-blue-400 text-sm"></i>
-                    <span>TG Science 2026 - Games Catalog & Hub</span>
+                    <span>Games</span>
                     <span id="global-play-badge" class="ml-2 text-[10px] bg-blue-500/20 text-blue-300 border border-blue-500/30 px-2 py-0.5 rounded-full font-mono">Global Plays: 0</span>
                 </div>
                 <div class="flex items-center space-x-1">
@@ -213,7 +213,7 @@
                     </div>
                 </div>
             </div>
-            <div id="games-list-container" class="flex-1 overflow-y-auto p-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            <div id="games-list-container" class="flex-1 overflow-y-auto p-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
             </div>
         </div>
         <div id="win-request" class="app-window absolute hidden pointer-events-auto mica-glass rounded-2xl overflow-hidden flex flex-col w-[90%] md:w-[750px] h-[78%] top-[8%] left-[5%] md:left-[18%] transition-shadow duration-200">
@@ -221,7 +221,7 @@
             <div class="window-header h-10 bg-white/5 border-b border-white/10 flex items-center justify-between px-3 cursor-move select-none">
                 <div class="flex items-center gap-2.5 text-xs font-semibold text-slate-200">
                     <i class="fa-solid fa-code-pull-request text-amber-400 text-sm"></i>
-                    <span>TG Science Request Hub & Suggestion Center</span>
+                    <span>Request Hub</span>
                 </div>
                 <div class="flex items-center space-x-1">
                     <button onclick="minimizeApp('request')" class="w-8 h-7 flex items-center justify-center rounded-lg hover:bg-white/10 text-slate-400 hover:text-white"><i class="fa-solid fa-minus text-xs"></i></button>
@@ -232,7 +232,7 @@
                 <div class="flex justify-between items-center bg-amber-500/10 border border-amber-500/20 rounded-xl p-3.5 text-xs text-amber-200/90">
                     <div class="flex items-center gap-2.5">
                         <i class="fa-solid fa-lightbulb text-amber-400 text-base"></i>
-                        <span>Submit requests for new games or proxy unblocks directly to Firestore.</span>
+                        <span>Submit requests for new games.</span>
                     </div>
                     <button onclick="openSuggestForm()" class="px-3.5 py-1.5 bg-gradient-to-r from-amber-500 to-orange-600 hover:brightness-110 text-white rounded-lg text-xs font-bold shadow transition flex items-center gap-1.5 shrink-0">
                         <i class="fa-solid fa-plus text-[10px]"></i> Suggest
@@ -275,18 +275,18 @@
             <div class="window-header h-10 bg-white/5 border-b border-white/10 flex items-center justify-between px-3 cursor-move select-none">
                 <div class="flex items-center gap-2.5 text-xs font-semibold text-slate-200">
                     <i class="fa-solid fa-bug text-amber-400 text-sm"></i>
-                    <span>TG Science Report Hub & Suggestion Center</span>
+                    <span>Report Hub</span>
                 </div>
                 <div class="flex items-center space-x-1">
-                    <button onclick="minimizeApp('report')" class="w-8 h-7 flex items-center justify-center rounded-lg hover:bg-white/10 text-slate-400 hover:text-white"><i class="fa-solid fa-minus text-xs"></i></button>
-                    <button onclick="closeApp('report')" class="w-8 h-7 flex items-center justify-center rounded-lg hover:bg-red-600 text-slate-400 hover:text-white"><i class="fa-solid fa-xmark text-sm"></i></button>
+                    <button onclick="minimizeApp('reports')" class="w-8 h-7 flex items-center justify-center rounded-lg hover:bg-white/10 text-slate-400 hover:text-white"><i class="fa-solid fa-minus text-xs"></i></button>
+                    <button onclick="closeApp('reports')" class="w-8 h-7 flex items-center justify-center rounded-lg hover:bg-red-600 text-slate-400 hover:text-white"><i class="fa-solid fa-xmark text-sm"></i></button>
                 </div>
             </div>
             <div class="p-4 flex-1 overflow-y-auto space-y-4">
                 <div class="flex justify-between items-center bg-amber-500/10 border border-amber-500/20 rounded-xl p-3.5 text-xs text-amber-200/90">
                     <div class="flex items-center gap-2.5">
                         <i class="fa-solid fa-lightbulb text-amber-400 text-base"></i>
-                        <span>Submit reports for games directly to Firestore.</span>
+                        <span>Submit reports for games or the website.</span>
                     </div>
                     <button onclick="openReportForm()" class="px-3.5 py-1.5 bg-gradient-to-r from-amber-500 to-orange-600 hover:brightness-110 text-white rounded-lg text-xs font-bold shadow transition flex items-center gap-1.5 shrink-0">
                         <i class="fa-solid fa-plus text-[10px]"></i> Report
@@ -329,7 +329,7 @@
             <div class="window-header h-10 bg-white/5 border-b border-white/10 flex items-center justify-between px-3 cursor-move select-none">
                 <div class="flex items-center gap-2.5 text-xs font-semibold text-slate-200">
                     <i class="fa-solid fa-circle-nodes text-purple-400 text-sm"></i>
-                    <span>Xandy Visual Engine Viewer</span>
+                    <span>Xandy</span>
                 </div>
                 <div class="flex items-center space-x-1">
                     <button onclick="minimizeApp('xandy')" class="w-8 h-7 flex items-center justify-center rounded-lg hover:bg-white/10 text-slate-400 hover:text-white"><i class="fa-solid fa-minus text-xs"></i></button>
@@ -337,10 +337,7 @@
                 </div>
             </div>
             <div class="flex-1 bg-black flex items-center justify-center p-2 relative overflow-hidden group">
-                <img id="xandy-img" src="images/.1system/xandy.jpg" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1200';" alt="Xandy System Visual" class="w-full h-full object-cover rounded-xl shadow-2xl border border-white/10 transition-transform duration-300 group-hover:scale-[1.01]">
-                <div class="absolute bottom-4 left-4 bg-black/70 backdrop-blur-md px-3.5 py-1.5 rounded-xl border border-white/10 text-xs text-purple-300 flex items-center gap-2">
-                    <i class="fa-solid fa-shield-halved text-purple-400"></i> Xandy Visual Core Active
-                </div>
+                <img id="xandy-img" src="images/.1system/xandy.jpg" alt="Xandy" class="w-full h-full object-cover rounded-xl shadow-2xl border border-white/10 transition-transform duration-300 group-hover:scale-[1.01]">
             </div>
         </div>
         <div id="win-settings" class="app-window absolute hidden pointer-events-auto mica-glass rounded-2xl overflow-hidden flex flex-col w-[90%] md:w-[680px] h-[75%] top-[10%] left-[5%] md:left-[20%] transition-shadow duration-200">
@@ -359,27 +356,30 @@
                 <div>
                     <h3 class="text-xs font-bold text-white mb-3 uppercase tracking-wider text-slate-400">Desktop Background Wallpaper</h3>
                     <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
-                        <button onclick="changeWallpaper('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2560')" class="h-20 rounded-xl border-2 border-blue-500 bg-cover bg-center hover:opacity-90 transition shadow-md" style="background-image: url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=300');"></button>
-                        <button onclick="changeWallpaper('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=2560')" class="h-20 rounded-xl border border-white/10 bg-cover bg-center hover:opacity-90 transition shadow-md" style="background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=300');"></button>
-                        <button onclick="changeWallpaper('https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=2560')" class="h-20 rounded-xl border border-white/10 bg-cover bg-center hover:opacity-90 transition shadow-md" style="background-image: url('https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=300');"></button>
-                        <button onclick="changeWallpaper('https://images.unsplash.com/photo-1534447677768-be436bb09401?q=80&w=2560')" class="h-20 rounded-xl border border-white/10 bg-cover bg-center hover:opacity-90 transition shadow-md" style="background-image: url('https://images.unsplash.com/photo-1534447677768-be436bb09401?q=80&w=300');"></button>
-                    </div>
-                </div>
-                <div class="border-t border-white/10 pt-4">
-                    <h3 class="text-xs font-bold text-white mb-3 uppercase tracking-wider text-slate-400">Windows Accent Color</h3>
-                    <div class="flex items-center gap-3">
-                        <button onclick="setAccentColor('#0078D4', '#106EBE', 'rgba(0,120,212,0.4)')" class="w-8 h-8 rounded-full bg-[#0078D4] border-2 border-white/40 hover:scale-110 transition"></button>
-                        <button onclick="setAccentColor('#107C41', '#0B5A2F', 'rgba(16,124,65,0.4)')" class="w-8 h-8 rounded-full bg-[#107C41] border-2 border-white/40 hover:scale-110 transition"></button>
-                        <button onclick="setAccentColor('#881798', '#6E127A', 'rgba(136,23,152,0.4)')" class="w-8 h-8 rounded-full bg-[#881798] border-2 border-white/40 hover:scale-110 transition"></button>
-                        <button onclick="setAccentColor('#C33900', '#A02E00', 'rgba(195,57,0,0.4)')" class="w-8 h-8 rounded-full bg-[#C33900] border-2 border-white/40 hover:scale-110 transition"></button>
+                        <button onclick="changeWallpaper('images/.1system/backgrounds/background-1.jpg')" class="h-20 rounded-xl border-2 border-blue-500 bg-cover bg-center hover:opacity-90 transition shadow-md" style="background-image: url('images/.1system/backgrounds/background-1.jpg');"></button>
+                        <button onclick="changeWallpaper('images/.1system/backgrounds/background-2.jpg')" class="h-20 rounded-xl border border-white/10 bg-cover bg-center hover:opacity-90 transition shadow-md" style="background-image: url('images/.1system/backgrounds/background-2.jpg');"></button>
+                        <button onclick="changeWallpaper('images/.1system/backgrounds/background-3.jpg')" class="h-20 rounded-xl border border-white/10 bg-cover bg-center hover:opacity-90 transition shadow-md" style="background-image: url('images/.1system/backgrounds/background-3.jpg');"></button>
+                        <button onclick="changeWallpaper('images/.1system/backgrounds/background-4.jpg')" class="h-20 rounded-xl border border-white/10 bg-cover bg-center hover:opacity-90 transition shadow-md" style="background-image: url('images/.1system/backgrounds/background-4.jpg');"></button>
+                        <button onclick="changeWallpaper('images/.1system/backgrounds/background-5.jpg')" class="h-20 rounded-xl border border-white/10 bg-cover bg-center hover:opacity-90 transition shadow-md" style="background-image: url('images/.1system/backgrounds/background-5.jpg');"></button>
+                        <button onclick="changeWallpaper('images/.1system/backgrounds/background-6.jpg')" class="h-20 rounded-xl border border-white/10 bg-cover bg-center hover:opacity-90 transition shadow-md" style="background-image: url('images/.1system/backgrounds/background-6.jpg');"></button>
+                        <button onclick="changeWallpaper('images/.1system/backgrounds/background-7.jpg')" class="h-20 rounded-xl border border-white/10 bg-cover bg-center hover:opacity-90 transition shadow-md" style="background-image: url('images/.1system/backgrounds/background-7.jpg');"></button>
+                        <button onclick="changeWallpaper('images/.1system/backgrounds/background-8.jpg')" class="h-20 rounded-xl border border-white/10 bg-cover bg-center hover:opacity-90 transition shadow-md" style="background-image: url('images/.1system/backgrounds/background-8.jpg');"></button>
+                        <button onclick="changeWallpaper('images/.1system/backgrounds/background-9.jpg')" class="h-20 rounded-xl border border-white/10 bg-cover bg-center hover:opacity-90 transition shadow-md" style="background-image: url('images/.1system/backgrounds/background-9.jpg');"></button>
+                        <button onclick="changeWallpaper('images/.1system/backgrounds/background-10.jpg')" class="h-20 rounded-xl border border-white/10 bg-cover bg-center hover:opacity-90 transition shadow-md" style="background-image: url('images/.1system/backgrounds/background-10.jpg');"></button>
+                        <button onclick="changeWallpaper('images/.1system/backgrounds/background-11.jpg')" class="h-20 rounded-xl border border-white/10 bg-cover bg-center hover:opacity-90 transition shadow-md" style="background-image: url('images/.1system/backgrounds/background-11.jpg');"></button>
+                        <button onclick="changeWallpaper('images/.1system/backgrounds/background-12.jpg')" class="h-20 rounded-xl border border-white/10 bg-cover bg-center hover:opacity-90 transition shadow-md" style="background-image: url('images/.1system/backgrounds/background-12.jpg');"></button>
+                        <button onclick="changeWallpaper('images/.1system/backgrounds/background-13.jpg')" class="h-20 rounded-xl border border-white/10 bg-cover bg-center hover:opacity-90 transition shadow-md" style="background-image: url('images/.1system/backgrounds/background-13.jpg');"></button>
+                        <button onclick="changeWallpaper('images/.1system/backgrounds/background-14.jpg')" class="h-20 rounded-xl border border-white/10 bg-cover bg-center hover:opacity-90 transition shadow-md" style="background-image: url('images/.1system/backgrounds/background-14.jpg');"></button>
+                        <button onclick="changeWallpaper('images/.1system/backgrounds/background-15.jpg')" class="h-20 rounded-xl border border-white/10 bg-cover bg-center hover:opacity-90 transition shadow-md" style="background-image: url('images/.1system/backgrounds/background-15.jpg');"></button>
+                        <button onclick="changeWallpaper('images/.1system/backgrounds/background-16.jpg')" class="h-20 rounded-xl border border-white/10 bg-cover bg-center hover:opacity-90 transition shadow-md" style="background-image: url('images/.1system/backgrounds/background-16.jpg');"></button>
+                        <button onclick="changeWallpaper('images/.1system/backgrounds/background-17.jpg')" class="h-20 rounded-xl border border-white/10 bg-cover bg-center hover:opacity-90 transition shadow-md" style="background-image: url('images/.1system/backgrounds/background-17.jpg');"></button>
+                        <button onclick="changeWallpaper('images/.1system/backgrounds/background-18.jpg')" class="h-20 rounded-xl border border-white/10 bg-cover bg-center hover:opacity-90 transition shadow-md" style="background-image: url('images/.1system/backgrounds/background-18.jpg');"></button>
                     </div>
                 </div>
                 <div class="border-t border-white/10 pt-4">
                     <h3 class="text-xs font-bold text-white mb-2 uppercase tracking-wider text-slate-400">System Information & Firebase Status</h3>
                     <div class="bg-black/40 p-3.5 rounded-xl border border-white/10 space-y-2 text-xs text-slate-300 font-mono">
-                        <div class="flex justify-between"><span>OS Build:</span><span class="text-blue-400">TG Science 2026 Enterprise</span></div>
-                        <div class="flex justify-between"><span>Firebase App ID:</span><span class="text-amber-400">tgscience26</span></div>
-                        <div class="flex justify-between"><span>Firebase SDK:</span><span id="sys-firebase-status" class="text-emerald-400 font-semibold">Initializing v10.4.0...</span></div>
+                        <div class="flex justify-between"><span>Firebase SDK:</span><span id="sys-firebase-status" class="text-emerald-400 font-semibold">Initializing...</span></div>
                         <div class="flex justify-between"><span>Global Plays Tracked:</span><span id="sys-global-plays" class="text-blue-300 font-bold">0</span></div>
                         <div class="flex justify-between"><span>Total Catalog Games:</span><span id="sys-game-count">0</span></div>
                     </div>
@@ -425,12 +425,12 @@
                     <span class="text-[11px] text-slate-200 mt-2 text-center truncate w-full font-medium">Requests</span>
                 </div>
                 <div onclick="openApp('report'); toggleStartMenu();" class="flex flex-col items-center p-3 rounded-2xl hover:bg-white/10 cursor-pointer transition">
-                    <div class="w-11 h-11 rounded-2xl bg-amber-600 flex items-center justify-center text-white text-lg shadow-md"><i class="fa-solid fa-bug"></i></div>
+                    <div class="w-11 h-11 rounded-2xl bg-red-600 flex items-center justify-center text-white text-lg shadow-md"><i class="fa-solid fa-bug"></i></div>
                     <span class="text-[11px] text-slate-200 mt-2 text-center truncate w-full font-medium">Reports</span>
                 </div>
                 <div onclick="openApp('xandy'); toggleStartMenu();" class="flex flex-col items-center p-3 rounded-2xl hover:bg-white/10 cursor-pointer transition">
                     <div class="w-11 h-11 rounded-2xl bg-purple-600 flex items-center justify-center text-white text-lg shadow-md"><i class="fa-solid fa-circle-nodes"></i></div>
-                    <span class="text-[11px] text-slate-200 mt-2 text-center truncate w-full font-medium">Xandy AI</span>
+                    <span class="text-[11px] text-slate-200 mt-2 text-center truncate w-full font-medium">Xandy</span>
                 </div>
             </div>
             <div class="mt-4 border-t border-white/10 pt-3">
@@ -445,8 +445,8 @@
                     TG
                 </div>
                 <div class="flex flex-col">
-                    <span class="text-xs font-semibold text-white">TG Student User</span>
-                    <span class="text-[10px] text-slate-400">TG Science 2026 Administrator</span>
+                    <span class="text-xs font-semibold text-white">Guest Science User</span>
+                    <span class="text-[10px] text-slate-400">TG Science</span>
                 </div>
             </div>
             <button onclick="toggleStartMenu()" class="w-9 h-9 rounded-xl hover:bg-white/10 flex items-center justify-center text-slate-300 hover:text-white transition">
@@ -456,7 +456,7 @@
     </div>
     <div id="calendar-flyout" class="fixed bottom-14 right-3 w-80 mica-glass rounded-2xl p-4 hidden z-40 shadow-2xl border border-white/15 win-animate-open">
         <div class="flex justify-between items-center mb-3">
-            <span id="cal-month-year" class="text-xs font-bold text-slate-200">October 2026</span>
+            <span id="cal-month-year" class="text-xs font-bold text-slate-200">January 1970</span>
             <div class="flex gap-2 text-xs text-slate-400">
                 <i class="fa-solid fa-chevron-up p-1 hover:text-white cursor-pointer"></i>
                 <i class="fa-solid fa-chevron-down p-1 hover:text-white cursor-pointer"></i>
@@ -489,10 +489,10 @@
                 <div id="pill-request" class="taskbar-pill w-0"></div>
             </button>
             <button id="tb-report" onclick="toggleApp('reports')" class="relative w-10 h-10 rounded-xl hover:bg-white/10 flex items-center justify-center transition group" title="Reports">
-                <i class="fa-solid fa-bug text-lg text-amber-400"></i>
-                <div id="pill-report" class="taskbar-pill w-0"></div>
+                <i class="fa-solid fa-bug text-lg text-red-400"></i>
+                <div id="pill-reports" class="taskbar-pill w-0"></div>
             </button>
-            <button id="tb-xandy" onclick="toggleApp('xandy')" class="relative w-10 h-10 rounded-xl hover:bg-white/10 flex items-center justify-center transition group" title="Xandy AI">
+            <button id="tb-xandy" onclick="toggleApp('xandy')" class="relative w-10 h-10 rounded-xl hover:bg-white/10 flex items-center justify-center transition group" title="Xandy">
                 <i class="fa-solid fa-circle-nodes text-lg text-purple-400"></i>
                 <div id="pill-xandy" class="taskbar-pill w-0"></div>
             </button>
@@ -505,14 +505,9 @@
             <button onclick="toggleSystemTheme()" class="w-8 h-8 rounded-lg hover:bg-white/10 flex items-center justify-center text-slate-300 transition" title="Toggle Light/Dark Theme">
                 <i id="theme-icon" class="fa-solid fa-moon text-xs"></i>
             </button>
-            <div class="flex items-center gap-2.5 px-2.5 py-1 rounded-lg hover:bg-white/10 cursor-pointer text-slate-300 transition">
-                <i class="fa-solid fa-wifi text-xs"></i>
-                <i class="fa-solid fa-volume-high text-xs"></i>
-                <i class="fa-solid fa-battery-three-quarters text-xs"></i>
-            </div>
             <button onclick="toggleCalendar()" class="flex flex-col items-end px-2 py-0.5 rounded-lg hover:bg-white/10 text-right cursor-pointer transition">
-                <span id="taskbar-time" class="text-[11px] font-bold text-slate-200 leading-tight">12:00 PM</span>
-                <span id="taskbar-date" class="text-[10px] text-slate-400 leading-tight">10/23/2026</span>
+                <span id="taskbar-time" class="text-[11px] font-bold text-slate-200 leading-tight">12:00 AM</span>
+                <span id="taskbar-date" class="text-[10px] text-slate-400 leading-tight">1/1/1970</span>
             </button>
         </div>
     </div>
@@ -534,7 +529,7 @@
             db = getFirestore(app);
             window.db = db;
             const statusEl = document.getElementById('sys-firebase-status');
-            if (statusEl) statusEl.innerText = "Connected (v10.4.0)";
+            if (statusEl) statusEl.innerText = "Connected";
             const globalStatsRef = doc(db, 'stats', 'global');
             onSnapshot(globalStatsRef, (docSnap) => {
                 if (docSnap.exists()) {
@@ -592,6 +587,36 @@
                 statusEl.innerText = "Offline Cache Active";
                 statusEl.className = "text-amber-400 font-semibold";
             }
+        }
+        try {
+            const backgrounds = [
+                'images/.1system/backgrounds/background-1.jpg',
+                'images/.1system/backgrounds/background-2.jpg',
+                'images/.1system/backgrounds/background-3.jpg',
+                'images/.1system/backgrounds/background-4.jpg',
+                'images/.1system/backgrounds/background-5.jpg',
+                'images/.1system/backgrounds/background-6.jpg',
+                'images/.1system/backgrounds/background-7.jpg',
+                'images/.1system/backgrounds/background-8.jpg',
+                'images/.1system/backgrounds/background-9.jpg',
+                'images/.1system/backgrounds/background-10.jpg',
+                'images/.1system/backgrounds/background-11.jpg',
+                'images/.1system/backgrounds/background-12.jpg',
+                'images/.1system/backgrounds/background-13.jpg',
+                'images/.1system/backgrounds/background-14.jpg',
+                'images/.1system/backgrounds/background-15.jpg',
+                'images/.1system/backgrounds/background-16.jpg',
+                'images/.1system/backgrounds/background-17.jpg',
+                'images/.1system/backgrounds/background-18.jpg'
+            ];
+            const randomIndex = Math.floor(Math.random() * backgrounds.length);
+            const selectedBg = backgrounds[randomIndex];
+            const bgElement = document.getElementById('desktop-wallpaper');
+            if (bgElement) {
+                bgElement.style.backgroundImage = `url('${selectedBg}')`;
+            }
+        } catch(e) {
+            console.error("Background Loading Error", e);
         }
         window.recordGamePlay = async function(gameId) {
             let globalPlays = parseInt(localStorage.getItem('globalPlays') || '0', 10) + 1;
@@ -733,15 +758,23 @@
             if (dateEl) dateEl.innerText = now.toLocaleDateString('en-US', { month: '2-digit', day: '2-digit', year: 'numeric' });
         }
         function renderCalendarDays() {
+            renderCalenderMonthYear();
             const grid = document.getElementById('cal-days-grid');
             if (!grid) return;
             grid.innerHTML = '';
             for (let i = 1; i <= 31; i++) {
                 const day = document.createElement('div');
-                day.className = `p-1.5 rounded-lg hover:bg-white/10 cursor-pointer ${i === 23 ? 'bg-blue-600 font-bold text-white shadow' : 'text-slate-300'}`;
+                const date = new Date().getDate();
+                day.className = `p-1.5 rounded-lg hover:bg-white/10 cursor-pointer ${i === date ? 'bg-blue-600 font-bold text-white shadow' : 'text-slate-300'}`;
                 day.innerText = i;
                 grid.appendChild(day);
             }
+        }
+        function renderCalenderMonthYear() {
+            const month = document.getElementById('cal-month-year');
+            if (!month) return;
+            const monthAndYear = new Date().toLocaleString('default', { month: 'long', year: 'numeric' });
+            month.innerText = monthAndYear;
         }
         function toggleCalendar() {
             const cal = document.getElementById('calendar-flyout');
@@ -932,7 +965,7 @@
                 return;
             }
             if (currentGameView === 'grid') {
-                container.className = 'flex-1 overflow-y-auto p-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4';
+                container.className = 'flex-1 overflow-y-auto p-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4';
                 filtered.forEach(game => {
                     const card = document.createElement('div');
                     card.className = 'bg-white/5 border border-white/10 hover:border-blue-500/50 rounded-2xl p-3.5 flex flex-col justify-between hover:bg-white/10 transition group cursor-pointer shadow-lg hover:scale-[1.02]';
@@ -940,7 +973,7 @@
                     const thumbImg = game.img ? `images/${game.img}` : 'images/.1system/noImage.jpg';
                     card.innerHTML = `
                         <div>
-                            <div class="w-full h-28 rounded-xl bg-slate-900 border border-white/10 overflow-hidden mb-3 group-hover:shadow-win-glow transition relative">
+                            <div class="w-full rounded-xl bg-slate-900 border border-white/10 overflow-hidden mb-3 group-hover:shadow-win-glow transition relative">
                                 <img src="${thumbImg}" onerror="this.onerror=null; this.src='images/.1system/noImage.jpg';" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
                                 <span class="absolute top-2 right-2 text-[9px] bg-black/60 backdrop-blur-md px-2 py-0.5 rounded-full text-blue-300 font-mono border border-white/10">${game.category || 'General'}</span>
                             </div>
@@ -1099,19 +1132,8 @@
                 </div>
             `).join('');
         };
-        function launchProxy() {
-            const url = document.getElementById('proxy-url').value;
-            if (url) {
-                document.getElementById('proxy-frame').src = url;
-            }
-        }
         function changeWallpaper(url) {
             document.getElementById('desktop-wallpaper').style.backgroundImage = `url('${url}')`;
-        }
-        function setAccentColor(accent, hover, glow) {
-            document.documentElement.style.setProperty('--win-accent', accent);
-            document.documentElement.style.setProperty('--win-accent-hover', hover);
-            document.documentElement.style.setProperty('--win-accent-glow', glow);
         }
         function toggleSystemTheme() {
             document.body.classList.toggle('light-theme');
