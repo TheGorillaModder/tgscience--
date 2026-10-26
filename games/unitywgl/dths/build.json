@@ -1,0 +1,13 @@
+{
+    "TOTAL_MEMORY": 1073741824,
+    "dataUrl": "build.data",
+    "asmCodeUrl": "build.asm.code",
+    "asmMemoryUrl": "build.asm.memory",
+    "asmFrameworkUrl": "build.framework.js",
+    "backgroundUrl": "",
+    "splashScreenStyle": "Dark",
+    "backgroundColor": "#111111",
+    "totalFile": 7,
+    "size": 134902255,
+    "split_size": 22483710
+}
