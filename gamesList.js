@@ -33,6 +33,12 @@ const gamesList = [
     { id: "tgse26gsd-slks", title: "Survival Karts", img: "unitywgl/slks.jpg", params: "?game=unitywgl/slks|.1system/unity/index", category: "", tags: ["100% working"], plays: 0 },
     { id: "tgse26gsd-hyrm", title: "Happy Room", img: "unitywgl/hyrm.jpg", params: "?game=unitywgl/hyrm|.1system/unity/index", category: "", tags: ["100% working"], plays: 0 },
     { id: "tgse26gsd-hwtofh", title: "How To Fish", img: "unitywgl/hwtofh.jpg", params: "?game=unitywgl/hwtofh|.1system/unity/index", category: "", tags: ["100% working"], plays: 0 },
+    
+    { id: "tgse26gsd-rxoy", title: "Roblox Obby", img: "unitywgl/rxoy.jpg", params: "?game=unitywgl/rxoy|.1system/unity/index", category: "", tags: ["100% working"], plays: 0 },
+    { id: "tgse26gsd-mdsk", title: "Mad Stick", img: "unitywgl/mdsk.jpg", params: "?game=unitywgl/mdsk|.1system/unity/index", category: "", tags: ["100% working"], plays: 0 },
+    { id: "tgse26gsd-gtyd", title: "Get Yoked", img: "unitywgl/gtyd.jpg", params: "?game=unitywgl/gtyd|.1system/unity/index", category: "", tags: ["100% working"], plays: 0 },
+    { id: "tgse26gsd-blss", title: "Brawl Stars", img: "unitywgl/blss.jpg", params: "?game=unitywgl/blss|.1system/unity/index", category: "", tags: ["100% working"], plays: 0 },
+    { id: "tgse26gsd-tedgydh", title: "3D Geometry Dash", img: "unitywgl/tedgydh.jpg", params: "?game=unitywgl/tedgydh|.1system/unity/index", category: "", tags: ["100% working"], plays: 0 },
 
     //Unity Legacy WebGL
     { id: "tgse26gsd-gyto", title: "Granny 2", img: "unitywgl/gyto.jpg", params: "?game=unitywgl/gyto|.1system/unity/indexold", category: "", tags: ["100% working"], plays: 0 },
@@ -42,6 +48,12 @@ const gamesList = [
     { id: "tgse26gsd-stsr", title: "Soviet Sniper", img: "unitywgl/stsr.jpg", params: "?game=unitywgl/stsr|.1system/unity/indexold", category: "", tags: ["100% working"], plays: 0 },
     { id: "tgse26gsd-agus", title: "Among Us", img: "unitywgl/agus.jpg", params: "?game=unitywgl/agus|.1system/unity/indexold", category: "", tags: ["100% working"], plays: 0 },
     { id: "tgse26gsd-srft", title: "Superflight", img: "unitywgl/srft.jpg", params: "?game=unitywgl/srft|.1system/unity/indexold", category: "", tags: ["100% working"], plays: 0 },
+    
+    { id: "tgse26gsd-hytc", title: "Highway Traffic", img: "unitywgl/hytc.jpg", params: "?game=unitywgl/hytc|.1system/unity/indexold", category: "", tags: ["100% working"], plays: 0 },
+    { id: "tgse26gsd-ftsm", title: "Flight Sim", img: "unitywgl/ftsm.jpg", params: "?game=unitywgl/ftsm|.1system/unity/indexold", category: "", tags: ["100% working"], plays: 0 },
+    { id: "tgse26gsd-dths", title: "Drift Hunters", img: "unitywgl/dths.jpg", params: "?game=unitywgl/dths|.1system/unity/indexold", category: "", tags: ["100% working"], plays: 0 },
+    { id: "tgse26gsd-bsbs", title: "Baldis Basics", img: "unitywgl/bsbs.jpg", params: "?game=unitywgl/bsbs|.1system/unity/indexold", category: "", tags: ["100% working"], plays: 0 },
+    { id: "tgse26gsd-tnmstldn", title: "10 Minutes Till Dawn", img: "unitywgl/tnmstldn.jpg", params: "?game=unitywgl/tnmstldn|.1system/unity/indexold", category: "", tags: ["100% working"], plays: 0 },
 
     //Unorganized
     { id: "tgse26gsd-awee", title: "Arrow Escape", img: "awee.jpg", category: "", tags: ["100% working"], plays: 0 },
@@ -50,6 +62,12 @@ const gamesList = [
     { id: "tgse26gsd-hfle", title: "Half Life", img: "hfle.jpg", params: "|hfle/index", category: "", tags: ["100% working"], plays: 0 },
     { id: "tgse26gsd-hfleogfe", title: "Half Life: Opposing Force", img: "hfleogfe.jpg", params: "|hfleogfe/index", category: "", tags: ["100% working"], plays: 0 },
     { id: "tgse26gsd-hyge", title: "Horsey Game", img: "hyge.jpg", params: "|hyge/index", category: "", tags: ["100% working"], plays: 0 },
+    
+    { id: "tgse26gsd-hetn", title: "Hardware Tycoon", img: "zUncatFolders/hetn.jpg", params: "|zUncatFolders/hetn/index", category: "", tags: ["100% working"], plays: 0 },
+    { id: "tgse26gsd-ftna", title: "Fruit Ninja", img: "zUncatFolders/ftna.jpg", params: "|zUncatFolders/ftna/index", category: "", tags: ["100% working"], plays: 0 },
+    { id: "tgse26gsd-srfyke", title: "Super Flippy Knife", img: "zUncatFolders/srfyke.jpg", params: "|zUncatFolders/srfyke/index", category: "", tags: ["100% working"], plays: 0 },
+    { id: "tgse26gsd-chre", title: "Clash Royale", img: "zUncatFolders/chre.jpg", params: "|zUncatFolders/chre/index", category: "", tags: ["100% working"], plays: 0 },
+    { id: "tgse26gsd-aetn", title: "Airline Tycoon", img: "zUncatFolders/aetn.jpg", params: "|zUncatFolders/aetn/index", category: "", tags: ["100% working"], plays: 0 },
 
     //Minecraft
     { id: "tgse26gsd-mectpe061aa", title: "Minecraft PE v0.6.1 alpha", img: "mect/mectpe061aa.jpg", category: "", params: "|mect/mectpe061aa/index", tags: [], plays: 0 },
