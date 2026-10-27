@@ -38,12 +38,12 @@ const gamesList = [
     { id: "tgse26gsd-slks", title: "Survival Karts", img: "unitywgl/slks.jpg", params: "?game=unitywgl/slks|.1system/unity/index", category: "", tags: ["100% working"], plays: 0, timeAdded: "2026-10-26" },
     { id: "tgse26gsd-hyrm", title: "Happy Room", img: "unitywgl/hyrm.jpg", params: "?game=unitywgl/hyrm|.1system/unity/index", category: "", tags: ["100% working"], plays: 0, timeAdded: "2026-10-26" },
     { id: "tgse26gsd-hwtofh", title: "How To Fish", img: "unitywgl/hwtofh.jpg", params: "?game=unitywgl/hwtofh|.1system/unity/index", category: "", tags: ["100% working"], plays: 0, timeAdded: "2026-10-26" },
-    { id: "tgse26gsd-wyfp", title: "Wacky Flip", img: "unitywgl/wyfp.jpg", params: "?game=unitywgl/wyfp|.1system/unity/index", category: "", tags: ["100% working"], plays: 0, timeAdded: "2026-10-26" },
-    { id: "tgse26gsd-uecrdgsr", title: "Ultimate Car Driving Simulator", img: "unitywgl/uecrdgsr.jpg", params: "?game=unitywgl/uecrdgsr|.1system/unity/index", category: "", tags: ["100% working"], plays: 0, timeAdded: "2026-10-26" },
-    { id: "tgse26gsd-tyaecg", title: "They Are Coming", img: "unitywgl/tyaecg.jpg", params: "?game=unitywgl/tyaecg|.1system/unity/index", category: "", tags: ["100% working"], plays: 0, timeAdded: "2026-10-26" },
-    { id: "tgse26gsd-sytrted", title: "Scary Teacher 3D", img: "unitywgl/sytrted.jpg", params: "?game=unitywgl/sytrted|.1system/unity/index", category: "", tags: ["100% working"], plays: 0, timeAdded: "2026-10-26" },
-    { id: "tgse26gsd-rnie", title: "Revolution Idle", img: "unitywgl/rnie.jpg", params: "?game=unitywgl/rnie|.1system/unity/index", category: "", tags: ["100% working"], plays: 0, timeAdded: "2026-10-26" },
-    { id: "tgse26gsd-mrgs", title: "Multiplayer Games", img: "unitywgl/mrgs.jpg", params: "?game=unitywgl/mrgs|.1system/unity/index", category: "", tags: ["100% working"], plays: 0, timeAdded: "2026-10-26" },
+    { id: "tgse26gsd-wyfp", title: "Wacky Flip", img: "unitywgl/wyfp.jpg", params: "?game=unitywgl/wyfp|.1system/unity/index", category: "", tags: ["100% working"], plays: 0, timeAdded: "2026-10-27" },
+    { id: "tgse26gsd-uecrdgsr", title: "Ultimate Car Driving Simulator", img: "unitywgl/uecrdgsr.jpg", params: "?game=unitywgl/uecrdgsr|.1system/unity/index", category: "", tags: ["100% working"], plays: 0, timeAdded: "2026-10-27" },
+    ////{ id: "tgse26gsd-tyaecg", title: "They Are Coming", img: "unitywgl/tyaecg.jpg", params: "?game=unitywgl/tyaecg|.1system/unity/indexydk", category: "", tags: ["100% working"], plays: 0, timeAdded: "2026-10-27" },
+    //{ id: "tgse26gsd-sytrted", title: "Scary Teacher 3D", img: "unitywgl/sytrted.jpg", params: "?game=unitywgl/sytrted|.1system/unity/index", category: "", tags: ["100% working"], plays: 0, timeAdded: "2026-10-27" },
+    { id: "tgse26gsd-rnie", title: "Revolution Idle", img: "unitywgl/rnie.jpg", params: "?game=unitywgl/rnie|.1system/unity/index", category: "", tags: ["100% working"], plays: 0, timeAdded: "2026-10-27" },
+    //{ id: "tgse26gsd-mrgs", title: "Multiplayer Games", img: "unitywgl/mrgs.jpg", params: "?game=unitywgl/mrgs|.1system/unity/index", category: "", tags: ["100% working"], plays: 0, timeAdded: "2026-10-27" },
 
     //Unity Legacy WebGL
     { id: "tgse26gsd-gyto", title: "Granny 2", img: "unitywgl/gyto.jpg", params: "?game=unitywgl/gyto|.1system/unity/indexold", category: "", tags: ["100% working"], plays: 0, timeAdded: "2026-10-26" },
