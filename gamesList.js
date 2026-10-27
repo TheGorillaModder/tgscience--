@@ -38,16 +38,12 @@ const gamesList = [
     { id: "tgse26gsd-slks", title: "Survival Karts", img: "unitywgl/slks.jpg", params: "?game=unitywgl/slks|.1system/unity/index", category: "", tags: ["100% working"], plays: 0, timeAdded: "2026-10-26" },
     { id: "tgse26gsd-hyrm", title: "Happy Room", img: "unitywgl/hyrm.jpg", params: "?game=unitywgl/hyrm|.1system/unity/index", category: "", tags: ["100% working"], plays: 0, timeAdded: "2026-10-26" },
     { id: "tgse26gsd-hwtofh", title: "How To Fish", img: "unitywgl/hwtofh.jpg", params: "?game=unitywgl/hwtofh|.1system/unity/index", category: "", tags: ["100% working"], plays: 0, timeAdded: "2026-10-26" },
-    
     { id: "tgse26gsd-wyfp", title: "Wacky Flip", img: "unitywgl/wyfp.jpg", params: "?game=unitywgl/wyfp|.1system/unity/index", category: "", tags: ["100% working"], plays: 0, timeAdded: "2026-10-26" },
     { id: "tgse26gsd-uecrdgsr", title: "Ultimate Car Driving Simulator", img: "unitywgl/uecrdgsr.jpg", params: "?game=unitywgl/uecrdgsr|.1system/unity/index", category: "", tags: ["100% working"], plays: 0, timeAdded: "2026-10-26" },
     { id: "tgse26gsd-tyaecg", title: "They Are Coming", img: "unitywgl/tyaecg.jpg", params: "?game=unitywgl/tyaecg|.1system/unity/index", category: "", tags: ["100% working"], plays: 0, timeAdded: "2026-10-26" },
     { id: "tgse26gsd-sytrted", title: "Scary Teacher 3D", img: "unitywgl/sytrted.jpg", params: "?game=unitywgl/sytrted|.1system/unity/index", category: "", tags: ["100% working"], plays: 0, timeAdded: "2026-10-26" },
     { id: "tgse26gsd-rnie", title: "Revolution Idle", img: "unitywgl/rnie.jpg", params: "?game=unitywgl/rnie|.1system/unity/index", category: "", tags: ["100% working"], plays: 0, timeAdded: "2026-10-26" },
     { id: "tgse26gsd-mrgs", title: "Multiplayer Games", img: "unitywgl/mrgs.jpg", params: "?game=unitywgl/mrgs|.1system/unity/index", category: "", tags: ["100% working"], plays: 0, timeAdded: "2026-10-26" },
-    
-    //{ id: "tgse26gsd-gtyd", title: "Get Yoked", img: "unitywgl/gtyd.jpg", params: "?game=unitywgl/gtyd|.1system/unity/index", category: "", tags: ["100% working"], plays: 0, timeAdded: "2026-10-27" },
-    //{ id: "tgse26gsd-blss", title: "Brawl Stars", img: "unitywgl/blss.jpg", params: "?game=unitywgl/blss|.1system/unity/index", category: "", tags: ["100% working"], plays: 0, timeAdded: "2026-10-27" },
 
     //Unity Legacy WebGL
     { id: "tgse26gsd-gyto", title: "Granny 2", img: "unitywgl/gyto.jpg", params: "?game=unitywgl/gyto|.1system/unity/indexold", category: "", tags: ["100% working"], plays: 0, timeAdded: "2026-10-26" },
@@ -60,26 +56,20 @@ const gamesList = [
     { id: "tgse26gsd-hytc", title: "Highway Traffic", img: "unitywgl/hytc.jpg", params: "?game=unitywgl/hytc|.1system/unity/indexold", category: "", tags: ["100% working"], plays: 0, timeAdded: "2026-10-27" },
     { id: "tgse26gsd-ftsm", title: "Flight Sim", img: "unitywgl/ftsm.jpg", params: "?game=unitywgl/ftsm|.1system/unity/indexold", category: "", tags: ["100% working"], plays: 0, timeAdded: "2026-10-27" },
     { id: "tgse26gsd-bsbs", title: "Baldis Basics", img: "unitywgl/bsbs.jpg", params: "?game=unitywgl/bsbs|.1system/unity/indexold", category: "", tags: ["100% working"], plays: 0, timeAdded: "2026-10-27" },
-
     { id: "tgse26gsd-tcjmted", title: "Traffic Jam 3D", img: "unitywgl/tcjmted.jpg", params: "?game=unitywgl/tcjmted|.1system/unity/indexold", category: "", tags: ["100% working"], plays: 0, timeAdded: "2026-10-27" },
     { id: "tgse26gsd-tboftemk", title: "Tomb of The Mask", img: "unitywgl/tboftemk.jpg", params: "?game=unitywgl/tboftemk|.1system/unity/indexold", category: "", tags: ["100% working"], plays: 0, timeAdded: "2026-10-27" },
-
-    //{ id: "tgse26gsd-dths", title: "Drift Hunters", img: "unitywgl/dths.jpg", params: "?game=unitywgl/dths|.1system/unity/indexold", category: "", tags: ["100% working"], plays: 0, timeAdded: "2026-10-27" },
-    //{ id: "tgse26gsd-tnmstldn", title: "10 Minutes Till Dawn", img: "unitywgl/tnmstldn.jpg", params: "?game=unitywgl/tnmstldn|.1system/unity/indexold", category: "", tags: ["100% working"], plays: 0, timeAdded: "2026-10-27" },
 
     //Unorganized
     { id: "tgse26gsd-awee", title: "Arrow Escape", img: "awee.jpg", category: "", tags: ["100% working"], plays: 0, timeAdded: "2026-10-26" },
     { id: "tgse26gsd-heis", title: "Hextris", img: "heis.jpg", category: "", tags: ["100% working"], plays: 0, timeAdded: "2026-10-26" },
     { id: "tgse26gsd-gdttaote", title: "Grand Theft Auto 3", img: "gdttaote.jpg", params: "|gdttaote/index", category: "", tags: ["100% working"], plays: 0, timeAdded: "2026-10-26" },
     { id: "tgse26gsd-hfle", title: "Half Life", img: "hfle.jpg", params: "|hfle/index", category: "", tags: ["100% working"], plays: 0, timeAdded: "2026-10-26" },
-    //{ id: "tgse26gsd-hfleogfe", title: "Half Life: Opposing Force", img: "hfleogfe.jpg", params: "|hfleogfe/index", category: "", tags: ["100% working"], plays: 0, timeAdded: "2026-10-27" },
-    { id: "tgse26gsd-hyge", title: "Horsey Game", img: "hyge.jpg", params: "|hyge/index", category: "", tags: ["100% working"], plays: 0, timeAdded: "2026-10-27" },
+    { id: "tgse26gsd-hyge", title: "Horsey Game", img: "zUncatFolders/hyge.jpg", params: "|zUncatFolders/hyge/index", category: "", tags: ["100% working"], plays: 0, timeAdded: "2026-10-27" },
     { id: "tgse26gsd-hetn", title: "Hardware Tycoon", img: "zUncatFolders/hetn.jpg", params: "|zUncatFolders/hetn/index", category: "", tags: ["100% working"], plays: 0, timeAdded: "2026-10-27" },
     { id: "tgse26gsd-ftna", title: "Fruit Ninja", img: "zUncatFolders/ftna.jpg", params: "|zUncatFolders/ftna/index", category: "", tags: ["100% working"], plays: 0, timeAdded: "2026-10-27" },
     { id: "tgse26gsd-srfyke", title: "Super Flippy Knife", img: "zUncatFolders/srfyke.jpg", params: "|zUncatFolders/srfyke/index", category: "", tags: ["100% working"], plays: 0, timeAdded: "2026-10-27" },
     { id: "tgse26gsd-chre", title: "Clash Royale", img: "zUncatFolders/chre.jpg", params: "|zUncatFolders/chre/index", category: "", tags: ["100% working"], plays: 0, timeAdded: "2026-10-27" },
     { id: "tgse26gsd-aetn", title: "Airline Tycoon", img: "zUncatFolders/aetn.jpg", params: "|zUncatFolders/aetn/index", category: "", tags: ["100% working"], plays: 0, timeAdded: "2026-10-27" },
-    
     { id: "tgse26gsd-siul", title: "Sushi Unroll", img: "zUncatFolders/siul.jpg", params: "|zUncatFolders/siul/index", category: "", tags: ["100% working"], plays: 0, timeAdded: "2026-10-27" },
     { id: "tgse26gsd-srht", title: "Superhot", img: "zUncatFolders/srht.jpg", params: "|zUncatFolders/srht/index", category: "", tags: ["100% working"], plays: 0, timeAdded: "2026-10-27" },
     { id: "tgse26gsd-semr", title: "Slice Master", img: "zUncatFolders/semr.jpg", params: "|zUncatFolders/semr/index", category: "", tags: ["100% working"], plays: 0, timeAdded: "2026-10-27" },
@@ -184,7 +174,11 @@ const gamesList = [
     { id: "tgse26gsd-bstrdefe", title: "Bloons Tower Defense 5", img: "bstrde/bstrdefe.jpg", params: "?game=bstrde/bstrdefe|.1system/ruffle", category: "", tags: ["100% working"], plays: 0, timeAdded: "2026-10-26" },
     { id: "tgse26gsd-dbwstode", title: "Dumb Ways To Die", img: "orfh/dbwstode.jpg", params: "?game=orfh/dbwstode|.1system/ruffle", category: "", tags: ["100% working"], plays: 0, timeAdded: "2026-10-26" },
 
-
+    //{ id: "tgse26gsd-dths", title: "Drift Hunters", img: "unitywgl/dths.jpg", params: "?game=unitywgl/dths|.1system/unity/indexold", category: "", tags: ["100% working"], plays: 0, timeAdded: "2026-10-27" },
+    //{ id: "tgse26gsd-tnmstldn", title: "10 Minutes Till Dawn", img: "unitywgl/tnmstldn.jpg", params: "?game=unitywgl/tnmstldn|.1system/unity/indexold", category: "", tags: ["100% working"], plays: 0, timeAdded: "2026-10-27" },
+    //{ id: "tgse26gsd-hfleogfe", title: "Half Life: Opposing Force", img: "hfleogfe.jpg", params: "|hfleogfe/index", category: "", tags: ["100% working"], plays: 0, timeAdded: "2026-10-27" },
+    //{ id: "tgse26gsd-gtyd", title: "Get Yoked", img: "unitywgl/gtyd.jpg", params: "?game=unitywgl/gtyd|.1system/unity/index", category: "", tags: ["100% working"], plays: 0, timeAdded: "2026-10-27" },
+    //{ id: "tgse26gsd-blss", title: "Brawl Stars", img: "unitywgl/blss.jpg", params: "?game=unitywgl/blss|.1system/unity/index", category: "", tags: ["100% working"], plays: 0, timeAdded: "2026-10-27" },
     //{ id: "tgse26gsd-gdttaoto", title: "Grand Theft Auto 2", img: "gdttaoto.jpg", params: "|gdttaoto/index", category: "", tags: ["100% working"], plays: 0 },
     //{ id: "tgse26gsd-fysr", title: "Funny Shooter", img: "unitywgl/fysr.jpg", params: "?game=unitywgl/fysr|.1system/unity/index", category: "", tags: ["100% working"], plays: 0 },
     //{ id: "tgse26gsd-rwfs", title: "Rainbow Friends", img: "unitywgl/rwfs.jpg", params: "?game=unitywgl/rwfs|.1system/unity/index", category: "", tags: ["100% working"], plays: 0 },
