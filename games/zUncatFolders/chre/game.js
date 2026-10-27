@@ -10037,10 +10037,10 @@ ig.module("plugins.branding.splash").requires("impact.impact", "impact.entity").
       x: 32,
       y: 32
     },
-    splash: new ig.Image("branding/splash1.png"),
+    splash: new ig.Image("media/graphics/loading/ajax-loader.gif"),
     init: function(b, c, d) {
       this.parent(b, c, d);
-      this.size.x = 458;
+      this.size.x = 100;
       this.size.y = 100;
       this.pos.x = (ig.system.width - this.size.x) / 2;
       this.pos.y = -this.size.y - 200;
@@ -10050,10 +10050,10 @@ ig.module("plugins.branding.splash").requires("impact.impact", "impact.entity").
             y: this.endPosY
           }
         },
-        0.5, {
+        0, {
           easing: ig.Tween.Easing.Bounce.EaseIn
         });
-      c = this.tween({}, 2.5, {
+      c = this.tween({}, 0, {
         onComplete: function() {
           ig.game.director.loadLevel(ig.game.director.currentLevel)
         }

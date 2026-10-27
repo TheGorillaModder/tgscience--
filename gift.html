@@ -199,6 +199,8 @@
                         <option value="alpha-desc">Alphabetical (Z-A)</option>
                         <option value="plays-desc">Most Played</option>
                         <option value="plays-asc">Least Played</option>
+                        <option value="added-desc">Newest</option>
+                        <option value="added-asc">Oldest</option>
                         <option value="category">Category</option>
                     </select>
                     <select id="game-category-filter" onchange="renderGames()" class="bg-black/40 border border-white/10 rounded-lg px-2.5 py-1.5 text-xs text-slate-200 focus:outline-none focus:border-blue-500">
@@ -953,7 +955,20 @@
             if (sort === 'alpha-asc') filtered.sort((a,b) => (a.title||a.name).localeCompare(b.title||b.name));
             if (sort === 'alpha-desc') filtered.sort((a,b) => (b.title||b.name).localeCompare(a.title||a.name));
             if (sort === 'plays-desc') filtered.sort((a,b) => (b.plays || 0) - (a.plays || 0));
-            if (sort === 'plays-asc') filtered.sort((a,b) => (a.plays || 0) - (b.plays || 0));
+            if (sort === 'plays-asc') filtered.sort((a,b) => (a.plays || 0) - (b.plays || 0));if (sort === 'added-desc') {
+                filtered.sort((a, b) => {
+                    const dateCompare = (b.timeAdded || '').localeCompare(a.timeAdded || '');
+                    if (dateCompare !== 0) return dateCompare;
+                    return (a.title || '').localeCompare(b.title || '');
+                });
+            }
+            if (sort === 'added-asc') {
+                filtered.sort((a, b) => {
+                    const dateCompare = (a.timeAdded || '').localeCompare(b.timeAdded || '');
+                    if (dateCompare !== 0) return dateCompare;
+                    return (a.title || '').localeCompare(b.title || '');
+                });
+            }
             if (sort === 'category') filtered.sort((a,b) => (a.category || '').localeCompare(b.category || ''));
             if (filtered.length === 0) {
                 container.innerHTML = `
